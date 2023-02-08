@@ -5,15 +5,16 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "server": "nodemon .",
-    "start": "concurrently \"nodemon server.js\" \"cd ../client && npm start\""
-
+    "start": "nodemon index.js",
+    "bothServers": "concurrently \"nodemon index.js\" \"cd ../client && npm start\""
   },
   "type": "module",
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "concurrently": "^7.6.0",
     "cors": "^2.8.5",
+    "dotenv": "^16.0.3",
     "express": "^4.18.2",
     "mongoose": "^6.9.1"
   },

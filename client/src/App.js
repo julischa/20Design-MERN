@@ -1,23 +1,14 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import DesignersList from "./components/DesignersList.js";
+//import { BrowserRouter as Router, Route } from 'react-router-dom';
 
 function App() {
+  //NOTE NExt steps : build a component to display your list of designers (fetch(localhost:5002))
+  //NOTE 2nd step :build the routing in your client.
+  //NOTE 3rd step : create a new collection, build base url, route, model and controller.
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <DesignersList />
     </div>
   );
 }

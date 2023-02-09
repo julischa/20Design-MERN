@@ -6,7 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "nodemon index.js",
-    "bothServers": "concurrently \"nodemon index.js\" \"cd ../client && npm start\""
+    "both": "concurrently \"nodemon index.js\" \"cd ../client && npm start\""
   },
   "type": "module",
   "author": "",

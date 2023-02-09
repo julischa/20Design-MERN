@@ -1,5 +1,5 @@
 import express from "express";
-import router from "./routes/test.js";
+import router from "./routes/designerRoutes.js";
 import cors from "cors";
 import mongoose from "mongoose";
 import dotenv from "dotenv";
@@ -16,19 +16,26 @@ app.use(
 );
 
 var corsOptions = {
-  origin: "http://localhost:5000",
+  origin: "http://localhost:3000",
   credentials: true,
 };
 
 app.use(cors(corsOptions));
+
+//NOTE Either you put everything into functions, like the one below (and later you call them), or you leave everything outside. I would recommend the "all inside functions" approach :)
+// const loadRoutes = () => {
+//   // app.use("/api", router);
+//   app.use("/api/test", router);
+// };
+
+app.use("/api/designers", router);
 
 const port = process.env.PORT || 5002;
 app.listen(port, () => {
   console.log("Server is running on " + port + "port");
 });
 
-app.use("/api", router);
-
+mongoose.set("strictQuery", false);
 mongoose
   .connect(process.env.MONGO_URI)
   .then(() => console.log("Connection to Mongo DB established"))

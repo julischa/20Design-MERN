@@ -1,5 +1,6 @@
 import express from "express";
 import router from "./routes/designerRoutes.js";
+import userRoutes from "./routes/userRoutes.js";
 import cors from "cors";
 import mongoose from "mongoose";
 import dotenv from "dotenv";
@@ -28,7 +29,9 @@ app.use(cors(corsOptions));
 //   app.use("/api/test", router);
 // };
 
-app.use("/api/designers", router);
+//app.use("/api/designers", router);
+app.use("/api", router);
+app.use("/api/user", userRoutes);
 
 const port = process.env.PORT || 5002;
 app.listen(port, () => {
@@ -36,7 +39,18 @@ app.listen(port, () => {
 });
 
 mongoose.set("strictQuery", false);
-mongoose
-  .connect(process.env.MONGO_URI)
-  .then(() => console.log("Connection to Mongo DB established"))
-  .catch((err) => console.log(err));
+//mongoose
+// .connect(process.env.MONGO_URI)
+// .then(() => console.log("Connection to Mongo DB established"))
+// .catch((err) => console.log(err));
+
+const mongoDBConnection = async () => {
+  try {
+    mongoose.connect(process.env.MONGO_URI);
+    console.log("MongoDB is running in port :>> ", port);
+  } catch (error) {
+    console.log("error connecting to MongoDB", error);
+  }
+};
+
+mongoDBConnection();

@@ -15,3 +15,5 @@ router.get("/:name", getDesignersByName);
 // router.get("/", getDesignersByName);//NOTE if you want to create a route to be used only with query params ( /?birth=8799, e.g)
 
 export default router;
+
+//NOTE : to comment in/out : shift + command + 7

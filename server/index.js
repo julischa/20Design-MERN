@@ -4,7 +4,6 @@ import userRoutes from "./routes/userRoutes.js";
 import cors from "cors";
 import mongoose from "mongoose";
 import dotenv from "dotenv";
-
 dotenv.config();
 
 const app = express();
@@ -38,15 +37,10 @@ app.listen(port, () => {
   console.log("Server is running on " + port + "port");
 });
 
-mongoose.set("strictQuery", false);
-//mongoose
-// .connect(process.env.MONGO_URI)
-// .then(() => console.log("Connection to Mongo DB established"))
-// .catch((err) => console.log(err));
-
 const mongoDBConnection = async () => {
+  await mongoose.set("strictQuery", false);
   try {
-    mongoose.connect(process.env.MONGO_URI);
+    await mongoose.connect(process.env.MONGO_URI);
     console.log("MongoDB is running in port :>> ", port);
   } catch (error) {
     console.log("error connecting to MongoDB", error);

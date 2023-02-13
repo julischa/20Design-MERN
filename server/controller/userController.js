@@ -1,4 +1,5 @@
 import User from "../models/userModel.js";
+import mongoose from "mongoose";
 
 const getAllUsers = async (req, res) => {
   try {
@@ -9,10 +10,34 @@ const getAllUsers = async (req, res) => {
   }
 };
 
-//create signup function
+const signup = async (req, res) => {
+  console.log("req", req);
+  console.log("req", req.body);
+  try {
+    //check if the user already exists
+    const existingUser = await User.findOne({ email: req.body.email });
 
-//1. check if the user already exists ( User.findOne({email:req.body.email}))
-//2.if the user Exists in the database, return an according response
-//3.if the user Does not exists  , we save in the DB (we create a new User object, using the model : const newUser = new User // newUser.save(), and send accoring respnse to client.
+    //if the user exists, return a response
+    if (existingUser) {
+      return res
+        .status(400)
+        .json({ message: "User already exists with this email" });
+    } else {
+      //if the user does not exist, save the new user in the DB
 
-export { getAllUsers };
+      const newUser = new User({
+        userName: req.body.userName,
+        email: req.body.email,
+        password: req.body.password,
+      });
+      const savedUser = await newUser.save();
+      res.status(201).json({ message: "User created successfully", savedUser });
+    }
+  } catch (error) {
+    console.log("error :>> ", error);
+    res.status(500).json({ message: "Error creating user" });
+  }
+};
+
+// module.exports = { getAllUsers, signup };
+export { getAllUsers, signup };

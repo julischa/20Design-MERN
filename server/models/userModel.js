@@ -2,16 +2,22 @@ import mongoose from "mongoose";
 const { Schema } = mongoose;
 
 const userSchema = new Schema({
-  username: {
+  userName: {
     type: String,
     required: true,
   },
-  //inclide passwords in the model
+  //include passwords in the model;
+  password: {
+    type: String,
+    required: true,
+  },
+
   email: {
     type: String,
     required: true,
     unique: true,
   },
+
   profilePic: {
     type: String,
     required: false,

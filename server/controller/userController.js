@@ -1,5 +1,5 @@
 import User from "../models/userModel.js";
-import mongoose from "mongoose";
+import { v2 as cloudinary } from "cloudinary";
 
 const getAllUsers = async (req, res) => {
   try {
@@ -39,5 +39,21 @@ const signup = async (req, res) => {
   }
 };
 
-// module.exports = { getAllUsers, signup };
-export { getAllUsers, signup };
+// image upload
+const imageUpload = async (req, res) => {
+  try {
+    const result = await cloudinary.uploader.upload(req.file.path, {
+      folder: "design/user",
+    });
+    res.status(200).json({
+      msg: "Image upload successful",
+      url: result.url,
+      img_id: result.public_id,
+    });
+  } catch (error) {
+    console.log("error", error);
+    res.status(500).json({ msg: "Error uploading image", error: error });
+  }
+};
+
+export { getAllUsers, signup, imageUpload };

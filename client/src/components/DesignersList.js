@@ -19,7 +19,6 @@ const DesignersList = () => {
   // }
   return (
     <div>
-      <h2>List of Designers</h2>
       <ul>
         {designers.allDesigners?.length > 0
           ? designers.allDesigners.map((designer) => <li>{designer.name}</li>)

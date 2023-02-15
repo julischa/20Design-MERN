@@ -4,6 +4,7 @@ import userRoutes from "./routes/userRoutes.js";
 import cors from "cors";
 import mongoose from "mongoose";
 import dotenv from "dotenv";
+import cloudinaryConfig from "./configuration/cloudinary.js";
 dotenv.config();
 
 const app = express();
@@ -21,12 +22,6 @@ var corsOptions = {
 };
 
 app.use(cors(corsOptions));
-
-//NOTE Either you put everything into functions, like the one below (and later you call them), or you leave everything outside. I would recommend the "all inside functions" approach :)
-// const loadRoutes = () => {
-//   // app.use("/api", router);
-//   app.use("/api/test", router);
-// };
 
 //app.use("/api/designers", router);
 app.use("/api", router);
@@ -48,3 +43,4 @@ const mongoDBConnection = async () => {
 };
 
 mongoDBConnection();
+cloudinaryConfig();

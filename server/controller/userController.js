@@ -1,5 +1,6 @@
 import User from "../models/userModel.js";
 import { v2 as cloudinary } from "cloudinary";
+import { hashedPasword } from "../utils/bcrypt.js";
 
 const getAllUsers = async (req, res) => {
   try {
@@ -23,12 +24,16 @@ const signup = async (req, res) => {
         .status(400)
         .json({ message: "User already exists with this email" });
     } else {
-      //if the user does not exist, save the new user in the DB
+      //if the user does not exist, : 1st: hash user's password, 2nd: save the new user in the DB
+
+      // Hash user's password
+      const mixedPassword = await hashedPasword(req.body.password);
+      console.log("mixedPassowrd", mixedPassword);
 
       const newUser = new User({
         userName: req.body.userName,
         email: req.body.email,
-        password: req.body.password,
+        password: mixedPassword,
       });
       const savedUser = await newUser.save();
       res.status(201).json({ message: "User created successfully", savedUser });

@@ -1,18 +1,90 @@
 body {
-  background-color: rgb(237, 237, 237)!important;
-  margin-left: 100px;
+  background-color: rgb(241, 241, 241)!important;
+  margin-left: 50px;
+  margin-right: 50px;
 }
 
-.nav-link {
+
+.red-circle {
+  width: 40px;
+  height: 40px;
+  margin-left: 30px;
+  margin-right: 10px;
+  border-radius: 50%;
+  background-color: red;
+}
+
+.navbar {
+  border-radius: none;
+  font-family: "itc-avant-garde-gothic-pro", sans-serif;
+  font-weight: 100;
+  font-size: 20px;
+}
+
+#searchbar {
+  width: 1200px;
+  display: flex;
+  align-items: center;
+  border-radius: 30px;
+  border-color: red;
   font-family: "itc-avant-garde-gothic-pro", sans-serif;
   font-weight: 300;
   font-size: 20px;
   font-style: normal;
+  color: red;
+}
+
+#searchbar::placeholder {
+  color: red;
+}
+
+#navlink {
+  color: red;
 }
 
 input {
-  width: 1000px;
-  height: 30px;
-  border-radius: 20px;
-  border-width: 0.2px;
+  color: red;
+}
+
+img {
+  width: 100px;
+}
+
+#message-img {
+  width: 43px; 
+  padding-top: 2px;
+}
+
+#search-img {
+  width: 39px;
+}
+
+#user-img {
+  width: 30px; 
+  padding-top: 2px;
+}
+
+#create-img {
+  width: 30px; 
+}
+
+#logo-img {
+  width: 200px;
+  padding-left: 20px;
+  padding-right: 20px; 
+}
+
+.my-masonry-grid {
+  display: flex;
+  padding-top: 40px;
+}
+
+.my-masonry-grid_column {
+  padding-left: 12px;
+  padding-left: 12px;
+}
+
+.card {
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  padding-top: 20px;
 }

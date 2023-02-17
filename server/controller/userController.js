@@ -28,7 +28,7 @@ const signup = async (req, res) => {
 
       // Hash user's password
       const mixedPassword = await hashedPasword(req.body.password);
-      console.log("mixedPassowrd", mixedPassword);
+      console.log("mixedPassword", mixedPassword);
 
       const newUser = new User({
         userName: req.body.userName,
@@ -46,10 +46,18 @@ const signup = async (req, res) => {
 
 // image upload
 const imageUpload = async (req, res) => {
+  //1.multer send us the location of the image inside req.file
+  console.log("req.file", req.file);
+
   try {
+    //2.upload picture to cloudinary, by providing the req.file.path (the location of the image in our computer)
     const result = await cloudinary.uploader.upload(req.file.path, {
       folder: "design/user",
     });
+
+    console.log("result", result);
+    //once we get the url from cloudinary (result.public_id , resul.url ...or other urls provided by cloudinary)
+    //3. send image to the client
     res.status(200).json({
       msg: "Image upload successful",
       url: result.url,

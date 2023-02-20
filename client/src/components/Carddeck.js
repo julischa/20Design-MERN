@@ -4,15 +4,15 @@ import Masonry from "react-masonry-css";
 
 const Pictures = () => {
   const greyTones = [
-    "#f2f2f2",
+    "#ff0000",
     "#d9d9d9",
-    "#bfbfbf",
+    "#000fff",
     "#a6a6a6",
     "#8c8c8c",
-    "#737373",
-    "#595959",
-    "#404040",
-    "#262626",
+    "#fff000",
+    "#000fff",
+    "#fff023",
+    "#ff0000",
     "#0d0d0d",
   ];
 
@@ -20,7 +20,7 @@ const Pictures = () => {
     default: 3,
     1300: 4,
     700: 3,
-    500: 2,
+    500: 1,
   };
 
   return (

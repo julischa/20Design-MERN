@@ -1,13 +1,13 @@
 import mongoose from "mongoose";
 const { Schema } = mongoose;
 
-const designerSchema = new mongoose.Schema({
+const designerSchema = new Schema({
   name: {
     type: String,
     required: true,
     unique: true,
   },
-  birth: {
+  born: {
     type: Number,
     required: true,
   },

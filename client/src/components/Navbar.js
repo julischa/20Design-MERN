@@ -11,9 +11,9 @@ function Navibar() {
     <Navbar className="mx-3 my-3 round-corners" bg="white">
       <Navbar.Brand href="/">
         <div className="logo">
-          <a href="/">
-            <img src={Logo} alt="Homepage" id="logo-img" />
-          </a>
+          {/* <a href="/"> */}
+          <img src={Logo} alt="Homepage" id="logo-img" />
+          {/* </a> */}
           <a href="/create">
             <img src={Create} alt="Create New" id="create-img" />
           </a>
@@ -34,6 +34,10 @@ function Navibar() {
         <Nav.Link id="navlink" href="#">
           {/* <img src={User} alt="Account" id="user-img" /> */}
           Account
+        </Nav.Link>
+        {/* //FIXME href produces a browser refresh, try to find a way to , either avoid the refresh, or use another element that admits a "to='/designers'" property */}
+        <Nav.Link id="navlink" href="/designers">
+          designers list
         </Nav.Link>
       </Nav>
     </Navbar>

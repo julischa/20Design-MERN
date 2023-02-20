@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 
 const DesignersList = () => {
   const [designers, setDesigners] = useState([]);
@@ -21,7 +22,11 @@ const DesignersList = () => {
     <div>
       <ul>
         {designers.allDesigners?.length > 0
-          ? designers.allDesigners.map((designer) => <li>{designer.name}</li>)
+          ? designers.allDesigners.map((designer) => (
+              <li>
+                <Link to={`${designer.name}`}>{designer.name}</Link>
+              </li>
+            ))
           : ""}
       </ul>
       {/* <input type="text" />

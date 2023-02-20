@@ -1,14 +1,12 @@
 import designerModel from "../models/designerModel.js";
 
-//NOTE if you prefer you can rename the parameters of the controller function as (request, response) , instead of (req, res)
 const getAllDesigners = async (req, response) => {
   console.log("all route");
-  console.log("req.query", req.query);
 
-  if (req.query.birth) {
+  if (req.query.born) {
     try {
       const designers = await designerModel.find({
-        birth: { $lte: req.query.birth },
+        born: { $lte: req.query.born },
       });
 
       console.log("designers", designers);
@@ -39,15 +37,22 @@ const getAllDesigners = async (req, response) => {
 };
 
 const getDesignersByName = async (req, res) => {
-  console.log("req", req);
-  console.log("req.query.birth>>>>", req.query.birth);
+  // console.log("req", req);
+  //when we fetch http://localhost:5002/api/designers/singleDesigner/:alvar  , "alvar" will arrive in the field req.params.name
+
+  // console.log("req.query.birth>>>>", req.query.birth);
+  console.log("req.query", req.query);
+  console.log("req.params", req.params);
   const designerName = req.params.name;
+  console.log("designerName", designerName);
 
   if (req.query.birth) {
+    console.log("req.query.born", req.query.born);
     try {
       const designers = await designerModel.find({
-        birth: { $lte: req.query.birth },
+        born: { $lte: req.query.born },
       });
+      console.log("designer with birth", designers);
       res.status(200).json({
         number: designers.length,
         designers,
@@ -59,16 +64,18 @@ const getDesignersByName = async (req, res) => {
     }
   } else {
     try {
-      const designer = await designerModel.find({ name: designerName });
-
+      // console.log("designerName before try", designerName);
+      const designer = await designerModel.findOne({ name: req.params.name });
+      console.log("designer", designer);
       if (designer.length === 0) {
         res.status(200).json({
           msg: "no designer with this name in the DB",
         });
+      } else {
+        res.status(200).json({
+          designer,
+        });
       }
-      res.status(200).json({
-        designer,
-      });
     } catch (error) {
       res.status(500).json({
         msg: "server error",

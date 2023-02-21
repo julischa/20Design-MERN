@@ -8,6 +8,7 @@ import DesignerDetails from "./pages/DesignerDetails";
 import Footer from "./components/Footer";
 import Register from "./components/Register";
 import Login from "./components/Login";
+import React, { useState } from "react";
 
 //Raul create Register component with own route in app
 //Raul create Login component with own route in app
@@ -17,6 +18,8 @@ import Login from "./components/Login";
 //Raul create User Profile component with own route in app
 
 function App() {
+  const [isOpen, setIsOpen] = useState(false); // Define isOpen and setIsOpen using useState
+
   return (
     <>
       <BrowserRouter>

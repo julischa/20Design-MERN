@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 import { useParams } from "react-router-dom";
 
 const DesignerDetails = () => {
@@ -8,7 +8,7 @@ const DesignerDetails = () => {
   // const formatted = designerName.toLowerCase().replace(/\s+/g, "");
   // console.log("formatted", formatted);
 
-  const [formattedName, setFormattedName] = useState("");
+  // const [formattedName, setFormattedName] = useState("");
 
   //uses a regular expression to globally (g) replace all whitespace characters (\s+)
   //in the designerName string with an empty string("").This removes all spaces, tabs, and newlines from string

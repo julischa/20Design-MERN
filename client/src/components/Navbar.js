@@ -11,30 +11,26 @@ function Navibar() {
   const [isOpen, setIsOpen] = useState(false); // Define isOpen state and setIsOpen function
 
   return (
-    <Navbar className="mx-3 my-3 round-corners" bg="white">
-      <Navbar.Brand>
-        <div className="logo">
-          <a href="/">
-            <img src={Logo} alt="Homepage" id="logo-img" />
-          </a>
-          <div>
-            <div onClick={() => setIsOpen(true)}>
-              <a>
-                <img src={Create} alt="Create New" id="create-img" />
-              </a>
-            </div>
-            {isOpen && (
-              <Modal
-                open={isOpen}
-                onClose={() => setIsOpen(false)}
-                container={document.getElementById("modal-root")}
-              >
-                <h1>Upload assets to create design</h1>
-              </Modal>
-            )}
+    <Navbar className="mx-3 text-center my-3 round-corners" bg="transparent">
+      <div style={{ display: "flex", justifyContent: "center" }}>
+        <a href="/">
+          <img src={Logo} alt="Homepage" id="logo-img" />
+        </a>
+        <div>
+          <div onClick={() => setIsOpen(true)}>
+            <img src={Create} alt="Create New" id="create-img" />
           </div>
+          {isOpen && (
+            <Modal
+              open={isOpen}
+              onClose={() => setIsOpen(false)}
+              container={document.getElementById("modal-root")}
+            >
+              <h1>Upload assets to create design</h1>
+            </Modal>
+          )}
         </div>
-      </Navbar.Brand>
+      </div>
       <FormControl
         id="searchbar"
         type="text"
@@ -42,11 +38,13 @@ function Navibar() {
         className="searchbar my-2 mb-2 mx-3"
       />
       <img src={Search} alt="Search" id="search-img" />
-      <Nav className="mx-5">
-        <Link to="/messagess">Messages</Link>
-        <Link to="/account">Account</Link>
-        <Link to="/designers">List</Link>
-      </Nav>
+      {/* <Nav className="mx-5">
+        <Nav className="mx-5 custom-links">
+          <Link to="/messages">MESSAGES</Link>
+          <Link to="/account">ACCOUNT</Link>
+          <Link to="/designers">LIST</Link>
+        </Nav>
+      </Nav> */}
     </Navbar>
   );
 }

@@ -1,32 +1,25 @@
 body {
-  background-color: rgb(241, 241, 241)!important;
+  background-color: #ebe5db!important;
   margin-left: 50px;
   margin-right: 50px;
 }
 
-
-.red-circle {
-  width: 40px;
-  height: 40px;
-  margin-left: 30px;
-  margin-right: 10px;
-  border-radius: 50%;
-  background-color: red;
-}
-
 .navbar {
+  display: flex;
+  justify-content: center;
   border-radius: none;
   font-family: "itc-avant-garde-gothic-pro", sans-serif;
-  font-weight: 100;
+  font-weight: 300;
   font-size: 20px;
 }
 
 #searchbar {
-  width: 1200px;
+  width: 600px;
   display: flex;
   align-items: center;
-  border-radius: 30px;
+  border-radius: 20px;
   border-color: red;
+  background-color: #ebe5db;
   font-family: "itc-avant-garde-gothic-pro", sans-serif;
   font-weight: 300;
   font-size: 20px;
@@ -76,18 +69,17 @@ img {
 
 .my-masonry-grid {
   display: flex;
-  padding-top: 40px;
+  align-items: center;
+  justify-content: center; /* Add this line */
+  padding: 3px; /* Add this line for 3px padding on each side of the card */
 }
 
 .my-masonry-grid_column {
-  padding-left: 12px;
-  padding-left: 12px;
+  margin-bottom: 3px; /* Add this line for 3px distance between the cards */
+  background-clip: padding-box; /* Add this line for sharp edges on the cards */
 }
 
-.card {
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-  padding-top: 20px;
-}
+
 
 footer {
     font-family: "itc-avant-garde-gothic-pro", sans-serif;
@@ -99,4 +91,18 @@ footer {
 
 footer:button {
   outline: red;
+}
+
+.custom-links a {
+  color: red;
+  text-decoration: none;
+  margin: 0 8px;
+  padding: 4px 8px;
+  border-radius: 0;
+}
+
+.custom-links a:hover {
+  background-color: red;
+  border-radius: 40px;
+  color: white;
 }

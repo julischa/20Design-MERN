@@ -4,7 +4,7 @@ import Logo from "../assets/logo.png";
 const Footer = () => {
   return (
     <div>
-      <footer class="bg-white text-center mx-3 my-3">
+      <footer class="bg-transparent text-center mx-3 my-3">
         <a class="btn btn-floating m-1" href="#!" role="button">
           <i class="fab fa-google"></i>
         </a>

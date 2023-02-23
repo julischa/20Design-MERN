@@ -16,8 +16,10 @@ const signup = async (req, res) => {
   console.log("req", req.body);
   try {
     //check if the user already exists
-    const existingUser = await User.findOne({ email: req.body.email });
-
+    const existingUser = await User.findOne({
+      email: req.body.email,
+    });
+    console.log("existingUser", existingUser);
     //if the user exists, return a response
     if (existingUser) {
       return res
@@ -69,4 +71,21 @@ const imageUpload = async (req, res) => {
   }
 };
 
-export { getAllUsers, signup, imageUpload };
+const login = async (req, res) => {
+  // console.log("login request arrived");
+  console.log("req.body", req.body);
+
+  //1. check if user exist in database
+  try {
+    const existingUser = await User.findOne({ email: req.body.email });
+    console.log("existingUser", existingUser);
+
+    if (!existingUser) {
+      res
+        .status(500)
+        .json({ msg: "do you have an account? if not, register first" });
+    }
+  } catch {}
+};
+
+export { getAllUsers, signup, imageUpload, login };

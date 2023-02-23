@@ -9,10 +9,8 @@ import Footer from "./components/Footer";
 import Register from "./components/Register";
 import Login from "./components/Login";
 import React, { useState } from "react";
+import Messages from "./pages/Messages";
 
-//Raul create Register component with own route in app
-//Raul create Login component with own route in app
-//Raul implement JWT : generate token function, and send the token to the client in login's response
 //Raul store token in front end and build function to check if token is stored after every refresh (which will mean that user is logged in)
 //Raul server getProfile route , that recieves the Token from client, and cheks it with Passport...
 //Raul create User Profile component with own route in app
@@ -33,6 +31,7 @@ function App() {
           />
           <Route path="/register" element={<Register />} />
           <Route path="/login" element={<Login />} />
+          <Route path="/messages" element={<Messages />} />
           {/* <Route path="/" element={<CreateContent />} /> */}
         </Routes>
       </BrowserRouter>

@@ -85,4 +85,9 @@ const getDesignersByName = async (req, res) => {
   }
 };
 
+//Raul 2.create a function that receives the information for the new content in the body.
+//Raul 3. inside that function , create a new object, using the designersMOdel, and save it to your designers collectio.
+//Raul 4. send response to the client
+//Raul 5. Check with postman
+
 export { getAllDesigners, getDesignersByName };

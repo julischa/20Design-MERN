@@ -6,14 +6,14 @@ const Pictures = () => {
   const greyTones = [
     "#ff0000",
     "#d9d9d9",
-    "#000fff",
-    "#a6a6a6",
-    "#8c8c8c",
-    "#fff000",
-    "#000fff",
-    "#fff023",
-    "#ff0000",
-    "#0d0d0d",
+    "#d9d9d9",
+    "#d9d9d9",
+    "#d9d9d9",
+    "#d9d9d9",
+    "#d9d9d9",
+    "#d9d9d9",
+    "#d9d9d9",
+    "#d9d9d9",
   ];
 
   const breakpointColumnsObj = {
@@ -28,6 +28,7 @@ const Pictures = () => {
       breakpointCols={breakpointColumnsObj}
       className="my-masonry-grid"
       columnClassName="my-masonry-grid_column"
+      style={{ width: "100%", padding: "3px" }}
     >
       {greyTones.map((tone, index) => (
         <Card
@@ -36,7 +37,9 @@ const Pictures = () => {
             backgroundColor: tone,
             height: `${100 + index * 90}px`,
             width: `${(index % 2 === 0 ? 2 : 1) * 236}px`,
-            boxShadow: "0px 4px 10px rgba(0, 0, 0, 0.1)",
+            borderRadius: "0px",
+            margin: "0px",
+            padding: "0px",
           }}
         >
           <Card.Body></Card.Body>

@@ -1,7 +1,9 @@
 import User from "../models/userModel.js";
 import { v2 as cloudinary } from "cloudinary";
-import { hashedPasword } from "../utils/bcrypt.js";
+import { comparePasswords, hashedPasword } from "../utils/bcrypt.js";
+import generateToken from "../utils/generateToken.js";
 
+//NOTE get all users
 const getAllUsers = async (req, res) => {
   try {
     const allUsers = await User.find({});
@@ -11,9 +13,15 @@ const getAllUsers = async (req, res) => {
   }
 };
 
+//NOTE  create users
 const signup = async (req, res) => {
-  console.log("req", req);
-  console.log("req", req.body);
+  //Sconsole.log("req", req.body);
+  if (!req.body.email) {
+    res.status(501).json({
+      msg: "Error - invalid email",
+    });
+    return;
+  }
   try {
     //check if the user already exists
     const existingUser = await User.findOne({
@@ -28,14 +36,14 @@ const signup = async (req, res) => {
     } else {
       //if the user does not exist, : 1st: hash user's password, 2nd: save the new user in the DB
 
-      // Hash user's password
+      //NOTE Hash user's password
       const mixedPassword = await hashedPasword(req.body.password);
       console.log("mixedPassword", mixedPassword);
 
       const newUser = new User({
         userName: req.body.userName,
         email: req.body.email,
-        password: mixedPassword,
+        password: mixedPassword, //NOTE hashedPassword
       });
       const savedUser = await newUser.save();
       res.status(201).json({ message: "User created successfully", savedUser });
@@ -46,7 +54,59 @@ const signup = async (req, res) => {
   }
 };
 
-// image upload
+//NOTE sign in
+const login = async (req, res) => {
+  // console.log("login request arrived");
+  //console.log("req.body", req.body);
+
+  if (!req.body.email) {
+    res.status(501).json({
+      msg: "Error - invalid email",
+    });
+    return;
+  }
+
+  //1. check if user exist in database
+  try {
+    const existingUser = await User.findOne({ email: req.body.email });
+    console.log("existingUser", existingUser);
+
+    if (!existingUser) {
+      res
+        .status(500)
+        .json({ msg: "do you have an account? if not, register first" });
+    } else {
+      // verify the password coming in the request (req.body.password), with the user's password in the database (which is the existingUser.password)
+
+      const correctPassword = await comparePasswords(
+        req.body.password,
+        existingUser.password
+      );
+      if (!correctPassword) {
+        res.status(401).json({
+          msg: "Error - incorrect password",
+        });
+        return;
+      }
+
+      const token = generateToken(existingUser._id);
+
+      const user = {
+        email: existingUser.email,
+        image: existingUser.image,
+        joined: existingUser.createdAt,
+      };
+
+      res.status(201).json({
+        msg: "Successfully logged in",
+        user: user,
+        token,
+      });
+    }
+  } catch {}
+};
+
+//NOTE img upload
 const imageUpload = async (req, res) => {
   //1.multer send us the location of the image inside req.file
   console.log("req.file", req.file);
@@ -69,23 +129,6 @@ const imageUpload = async (req, res) => {
     console.log("error", error);
     res.status(500).json({ msg: "Error uploading image", error: error });
   }
-};
-
-const login = async (req, res) => {
-  // console.log("login request arrived");
-  console.log("req.body", req.body);
-
-  //1. check if user exist in database
-  try {
-    const existingUser = await User.findOne({ email: req.body.email });
-    console.log("existingUser", existingUser);
-
-    if (!existingUser) {
-      res
-        .status(500)
-        .json({ msg: "do you have an account? if not, register first" });
-    }
-  } catch {}
 };
 
 export { getAllUsers, signup, imageUpload, login };

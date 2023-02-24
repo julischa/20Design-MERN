@@ -7,4 +7,9 @@ const hashedPasword = async (userPassword) => {
   return hashedPassword;
 };
 
-export { hashedPasword };
+const comparePasswords = async (loginPassword, userPassword) => {
+  const result = await bcrypt.compare(loginPassword, userPassword);
+  return result;
+};
+
+export { hashedPasword, comparePasswords };

@@ -11,7 +11,6 @@ import Login from "./components/Login";
 import React, { useState } from "react";
 import Messages from "./pages/Messages";
 
-//Raul store token in front end and build function to check if token is stored after every refresh (which will mean that user is logged in)
 //Raul server getProfile route , that recieves the Token from client, and cheks it with Passport...
 //Raul create User Profile component with own route in app
 

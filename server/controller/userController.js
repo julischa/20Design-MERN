@@ -108,8 +108,9 @@ const login = async (req, res) => {
 
 //NOTE img upload
 const imageUpload = async (req, res) => {
+  console.log("req", req);
   //1.multer send us the location of the image inside req.file
-  console.log("req.file", req.file);
+  // console.log("req.file", req.file);
 
   try {
     //2.upload picture to cloudinary, by providing the req.file.path (the location of the image in our computer)

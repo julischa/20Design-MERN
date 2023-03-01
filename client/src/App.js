@@ -10,6 +10,8 @@ import Register from "./components/Register";
 import Login from "./components/Login";
 import React, { useState } from "react";
 import Messages from "./pages/Messages";
+import CreateContent from "./pages/CreateContent";
+import HomePage from "./pages/HomePage";
 
 //Raul server getProfile route , that recieves the Token from client, and cheks it with Passport...
 //Raul create User Profile component with own route in app
@@ -21,8 +23,8 @@ function App() {
     <>
       <BrowserRouter>
         <Navbar />
+        <HomePage />
         <Routes>
-          <Route path="/" element={<Carddeck />} />
           <Route path="/designers" element={<DesignersList />} />
           <Route
             path="/designers/:designerName"

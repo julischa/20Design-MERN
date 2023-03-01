@@ -1,6 +1,7 @@
 import React from "react";
 import ReactDom from "react-dom";
 import "../components/Modal/Modal.css";
+import Create from "../assets/create.png";
 
 export default function Modal({ open, children, onClose }) {
   if (!open) return null;
@@ -10,7 +11,7 @@ export default function Modal({ open, children, onClose }) {
       <div className="overlay" />
       <div className="modal-open text-center">
         <button className="modal-close" onClick={onClose}>
-          Close
+          <img src={Create} alt="Create New" id="close-img" />
         </button>
         {children}
       </div>

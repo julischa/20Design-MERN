@@ -5,6 +5,7 @@ const multerUpload = multer({
   storage: multer.diskStorage({}),
 
   fileFilter: function fileFilter(req, file, cb) {
+    console.log("req", req);
     let extension = path.extname(file.originalname);
 
     const allowedExtensions = [".jpg", ".jpeg", ".png"];

@@ -17,7 +17,7 @@ const Pictures = () => {
   ];
 
   const breakpointColumnsObj = {
-    default: 3,
+    default: 7,
     1300: 4,
     700: 3,
     500: 1,

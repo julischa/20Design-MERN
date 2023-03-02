@@ -10,6 +10,11 @@ function CreateContent() {
     description: "",
   });
 
+  const person = {
+    name: "raul",
+    hair: "dark",
+  };
+
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     setPostData({ ...postData, [name]: value });
@@ -29,24 +34,17 @@ function CreateContent() {
 
       const formData = new FormData();
       formData.append("file", pictureFile);
-      formData.append("folder", postData);
+      formData.append("title", postData.title);
+      formData.append("description", postData.description);
+      // formData.append("folder", JSON.stringify(postData)); // Raul this transforms and object into a string, so it can be sent inside the request. Then later should be parsed back to object using JSON.parse(...)
 
-      console.log('formData.get("folder")', formData.get("folder"));
+      // console.log('formData.get("folder")', formData.get("folder"));
 
       //^console.log('formData.getAll("file")', formData.getAll("file"));
 
-      const requestOptions = {
-        method: "POST",
-        body: formData,
-        headers: {
-          "x-device-id": "stuff",
-          "Content-Type": "multipart/form-data",
-        },
-      };
-
       const { data } = await axios.post(
         "http://localhost:5002/api/user/imageUpload",
-        requestOptions
+        formData
       );
 
       console.log("res", data);
@@ -79,7 +77,7 @@ function CreateContent() {
   return (
     <div className="create-content">
       <label htmlFor="picture" className="custom-file-upload">
-        {pictureFile ? pictureFile.name : "Select Image"}
+        {pictureFile ? pictureFile.name : "select file"}
       </label>
       <input
         id="picture"
@@ -94,7 +92,7 @@ function CreateContent() {
       {/* <form onSubmit={handleSubmit}> */}
       <form onSubmit={createContentSubmit}>
         <div>
-          <label htmlFor="title">Title</label>
+          <label htmlFor="title">Give your file a title:</label>
           <input
             type="text"
             name="title"
@@ -105,7 +103,7 @@ function CreateContent() {
           />
         </div>
         <div>
-          <label htmlFor="description">Description</label>
+          <label htmlFor="description">& a description:</label>
           <textarea
             name="description"
             className="description-input"
@@ -116,7 +114,7 @@ function CreateContent() {
         </div>
         <div></div>
         <button type="submit" className="submit-button">
-          Add Idea
+          UPLOAD
         </button>
       </form>
     </div>

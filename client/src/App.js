@@ -12,6 +12,7 @@ import React, { useState } from "react";
 import Messages from "./pages/Messages";
 import CreateContent from "./pages/CreateContent";
 import HomePage from "./pages/HomePage";
+import Redpage from "./components/Redpage";
 
 //Raul server getProfile route , that recieves the Token from client, and cheks it with Passport...
 //Raul create User Profile component with own route in app
@@ -24,6 +25,7 @@ function App() {
       <BrowserRouter>
         <Navbar />
         <HomePage />
+        <Redpage />
         <Routes>
           <Route path="/designers" element={<DesignersList />} />
           <Route

@@ -2,6 +2,7 @@ import User from "../models/userModel.js";
 import { v2 as cloudinary } from "cloudinary";
 import { comparePasswords, hashedPasword } from "../utils/bcrypt.js";
 import generateToken from "../utils/generateToken.js";
+import postModel from "../models/postModel.js";
 
 //NOTE get all users
 const getAllUsers = async (req, res) => {
@@ -108,24 +109,46 @@ const login = async (req, res) => {
 
 //NOTE img upload
 const imageUpload = async (req, res) => {
-  console.log("req", req);
+  // console.log("req", req.file);
+  console.log("req.body:::", req.body);
+  // console.log("req.body:::", req.body.title);
   //1.multer send us the location of the image inside req.file
   // console.log("req.file", req.file);
 
   try {
     //2.upload picture to cloudinary, by providing the req.file.path (the location of the image in our computer)
     const result = await cloudinary.uploader.upload(req.file.path, {
-      folder: "design/user",
+      folder: "posts",
     });
-
     console.log("result", result);
-    //once we get the url from cloudinary (result.public_id , resul.url ...or other urls provided by cloudinary)
-    //3. send image to the client
-    res.status(200).json({
-      msg: "Image upload successful",
-      url: result.url,
-      img_id: result.public_id,
-    });
+    if (result) {
+      console.log("result url", result.url);
+      const post = new postModel({
+        picture: result.url,
+        title: req.body.title,
+        description: req.body.description,
+      });
+
+      try {
+        const savedPost = await post.save();
+
+        // const savedPost = await post.save()
+        // console.log("result", result);
+        //once we get the url from cloudinary (result.public_id , resul.url ...or other urls provided by cloudinary)
+        //3. send image to the client
+        res.status(200).json({
+          // msg: "Image upload successful",
+          // url: result.url,
+          // img_id: result.public_id,
+          msg: "Image upload successful",
+          savedPost,
+        });
+      } catch (error) {
+        res.status(500).json({ msg: "error trying to post a new post" });
+      }
+    } else {
+      res.status(500).json({ msg: "error trying to upload the image" });
+    }
   } catch (error) {
     console.log("error", error);
     res.status(500).json({ msg: "Error uploading image", error: error });

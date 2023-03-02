@@ -13,7 +13,7 @@ const Footer = () => {
           <i class="fab fa-instagram"></i>
         </a>
 
-        <div class="text-center p-3">Placeholder</div>
+        <div class="text-center p-3"></div>
         <img src={Logo} alt="Homepage" id="logo-img" className="mb-4" />
       </footer>
     </div>

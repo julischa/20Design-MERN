@@ -1,6 +1,5 @@
 import React from "react";
 import ReactDom from "react-dom";
-import "../components/Modal/Modal.css";
 import Create from "../assets/create.png";
 
 export default function Modal({ open, children, onClose }) {

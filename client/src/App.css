@@ -30,7 +30,7 @@ body {
 }
 
 .landingtext {
-  margin-left: 200px;
+  margin-left: 370px;
   margin-top: 40px;
   font-family: "SpaceGrotesk", sans-serif;
   font-weight: 200;
@@ -141,7 +141,7 @@ footer:button {
 
 .custom-links a:hover {
   background-color: red;
-  border-radius: 40px;
+  border-radius: none;
   color: white;
 }
 
@@ -197,4 +197,172 @@ img#img2 {
   100% {
     transform: translateY(0) translateX(50%);
   }
+}
+
+
+.modal-open{
+    font-family: "itc-avant-garde-gothic-pro", sans-serif;
+    font-weight: 300;
+    font-size: 20px;
+    position: absolute;
+    background-color: #faf5ee!important;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 700px;
+    height: 400px;
+    padding: 3rem;
+    z-index: 50;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(146, 145, 145, 0.7);
+    z-index: 20;
+}
+
+.modal-close {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    cursor: pointer;
+    color: red;
+    background-color: transparent;
+    border: none;
+    outline: none;
+    font-family: SpaceGrotesk;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-family: "SpaceGrotesk", sans-serif;
+}
+
+label {
+    margin-top: 10px;
+    margin-bottom: 5px;
+    color: red;
+    font-family: "SpaceGrotesk", sans-serif;
+}
+
+input[type="text"],
+textarea {
+    width: 100%;
+    background-color: #ffffff;
+    border-radius: 1px;
+    border: 1px solid white;
+    font-family: "SpaceGrotesk", sans-serif;
+}
+
+input[type="text"]:focus,
+textarea:focus {
+    border-color: none;
+    outline: none;
+}
+
+#close-img {
+  width: 40px;
+  transform: rotate(45deg);
+}
+
+textarea {
+    resize: vertical;
+    min-height: 100px;
+    font-family: "SpaceGrotesk", sans-serif;
+    color: red;
+}
+
+input[type="file"] {
+    margin-bottom: 50px;
+}
+
+button[type="submit"] {
+    padding: 10px;
+    background-color: transparent;
+    border-color: red;
+    border: none;
+    border-radius: 50%;
+    color: red;
+    cursor: pointer;
+    font-family: "SpaceGrotesk", sans-serif;
+}
+
+button[type="submit"]:hover {
+    background-color: white;
+    border-radius: none!important;
+}
+
+input[type="text"],
+textarea,
+button[type="submit"] {
+    font-family: "SpaceGrotesk", sans-serif;
+}
+
+#file-label {
+  background-color: red;
+  color: transparent;
+  border-radius: 5px;
+  font-family: "SpaceGrotesk", sans-serif;
+  cursor: pointer;
+}
+
+button:picture-input {
+  color: red;
+}
+
+.custom-file-upload {
+  color: red;
+  cursor: pointer;
+}
+
+/* Change the background color of selected text to red */
+::selection {
+    background-color: red;
+    color: #fff;
+}
+
+.redpage {
+  margin-top: 200px;
+  margin-left: 80px;
+  margin-right: 80px;
+  background-color: red;
+  padding-top: 200px;
+  font-family: SpaceGrotesk;
+  font-size: 100px;
+  color: white;
+  padding-bottom: 200px;
+  padding-left: 370px;
+}
+
+button.signup {
+  background-color: transparent;
+  color: red;
+  border: 1px solid red;
+  border-radius: 30px;
+  padding: 7px 20px;
+  font-size: 26px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+
+
+button.signup:hover {
+  background-color: red;
+  color: white;
+}
+
+
+button.signup:active {
+  text-decoration: none;
 }

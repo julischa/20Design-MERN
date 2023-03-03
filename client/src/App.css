@@ -366,3 +366,79 @@ button.signup:hover {
 button.signup:active {
   text-decoration: none;
 }
+
+
+*,
+*:after,
+*:before {
+	box-sizing: border-box;
+}
+
+:root {
+	--gap: 1rem;
+	--card-width: clamp(280px, 20vw, 100vw);
+	--card-aspect-ratio: 5 / 7;
+	--card-height: calc(var(--card-width) * (7 / 5));
+}
+
+body {
+	display: grid;
+	place-items: center;
+	font-family:  'Google Sans', sans-serif, system-ui;
+	overflow-x: hidden;
+	justify-content: center;
+	min-height: 100vh;
+}
+
+.grid {
+	display: grid;
+	justify-content: center;
+	grid-template-columns: repeat(5, var(--card-width));
+	gap: 1rem;
+  /* overflow: hidden shouldn't break this? */
+  overflow: hidden;
+}
+
+.grid-wrapper {
+	/* overflow: hidden; */
+}
+
+.column {
+	display: grid;
+	gap: 1rem;
+  align-content: start;
+}
+
+.column:not(:nth-of-type(3)) {
+	animation: scale 1s linear both;
+	animation-timeline: scroll(root);
+}
+
+/* The distance is the number of cards minus 100vh */
+.column:is(:nth-of-type(2), :nth-of-type(4)) {
+	--origin: calc(var(--gap) * -1);
+	--destination: calc(var(--card-height) * 1.5 + var(--gap));
+}
+.column:is(:nth-of-type(1), :nth-of-type(5)) {
+	--origin: calc(var(--gap) * -2);
+	--destination: calc(var(--card-height) * 3.4 + var(--gap));
+}
+
+@keyframes scale {
+	0% {
+		transform: translateY(var(--origin, 0%));
+	}
+	100% {
+		transform: translateY(var(--destination, -50%));
+	}
+}
+
+img {
+	max-width: 100%;
+	border: 0;
+	padding: 0;
+	max-height: 100%;
+	width: 100%;
+	aspect-ratio: 5 / 7;
+	background: hsl(0 0% 80%);
+}

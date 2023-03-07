@@ -1,5 +1,5 @@
 import "bootstrap/dist/css/bootstrap.min.css";
-import { Navbar, Nav, FormControl } from "react-bootstrap";
+import { Navbar, FormControl } from "react-bootstrap";
 import Logo from "../assets/logo.png";
 import User from "../assets/user.png";
 import Message from "../assets/message.png";
@@ -28,7 +28,7 @@ function Navibar() {
               onClose={() => setIsOpen(false)}
               container={document.getElementById("modal-root")}
             >
-              <CreateContent />
+              <CreateContent setIsOpen={setIsOpen} />
             </Modal>
           )}
         </div>

@@ -1,12 +1,14 @@
 import React from "react";
 import Img1 from "../assets/img1.jpg";
 import Img2 from "../assets/img2.jpg";
+import { useNavigate } from "react-router-dom";
 
-const HomePage = () => {
-  const handleSignUp = () => {
-    // your sign-up function here
-    console.log("Sign up button clicked!");
-  };
+function HomePage() {
+  const navigate = useNavigate();
+
+  function handleSignUp() {
+    navigate("/register");
+  }
 
   return (
     <div className="d-flex flex-column align-items-center justify-content-center vh-100">
@@ -18,12 +20,13 @@ const HomePage = () => {
         </button>
         <span></span>
       </div>
+
       <div className="container d-flex justify-content-center mx-5">
         <img src={Img1} alt="image1" id="img1" />
         <img src={Img2} alt="image2" id="img2" />
       </div>
     </div>
   );
-};
+}
 
 export default HomePage;

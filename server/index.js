@@ -2,6 +2,7 @@ import express from "express";
 import router from "./routes/designerRoutes.js";
 import userRoutes from "./routes/userRoutes.js";
 import designerRoutes from "./routes/designerRoutes.js";
+import postsRouter from "./routes/postsRouter.js";
 import cors from "cors";
 import mongoose from "mongoose";
 import dotenv from "dotenv";
@@ -27,6 +28,7 @@ app.use(cors(corsOptions));
 app.use("/api", router);
 app.use("/api/user", userRoutes);
 app.use("/api/designers", designerRoutes);
+app.use("/api/posts", postsRouter);
 
 const port = process.env.PORT || 5002;
 app.listen(port, () => {

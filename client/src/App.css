@@ -2,6 +2,8 @@ body {
   background-color: #faf5ee!important;
   margin-left: 50px;
   margin-right: 50px;
+  position: relative;
+  overflow: hidden;
 }
 
 .navbar {
@@ -11,6 +13,10 @@ body {
   font-family: "itc-avant-garde-gothic-pro", sans-serif;
   font-weight: 300;
   font-size: 20px;
+}
+
+p {
+  color: red;
 }
 
 @keyframes slideUp {
@@ -42,9 +48,16 @@ body {
   animation: slideUp 1s ease-in-out;
 }
 
+h1 {
+  font-family: "SpaceGrotesk", sans-serif;
+  font-weight: 300;
+  font-size: 10px;
+  font-style: normal;
+  color: red;
+}
 
 h2 {
-  font-family: "itc-avant-garde-gothic-pro", sans-serif;
+  font-family: "SpaceGrotesk", sans-serif;
   font-weight: 300;
   font-size: 10px;
   font-style: normal;
@@ -85,6 +98,10 @@ img {
   width: 38px;
 }
 
+#upload-img {
+  width: 70px;
+}
+
 #search-img {
   width: 39px;
 }
@@ -103,20 +120,6 @@ img {
   padding-left: 20px;
   padding-right: 20px; 
 }
-
-.my-masonry-grid {
-  display: flex;
-  align-items: center;
-  justify-content: center; /* Add this line */
-  padding: 3px; /* Add this line for 3px padding on each side of the card */
-}
-
-.my-masonry-grid_column {
-  margin-bottom: 3px; /* Add this line for 3px distance between the cards */
-  background-clip: padding-box; /* Add this line for sharp edges on the cards */
-}
-
-
 
 footer {
     font-family: "itc-avant-garde-gothic-pro", sans-serif;
@@ -164,6 +167,7 @@ img#img2 {
   right: 50%;
   width: 27%;
   transform: translateX(-50%);
+  display: none;
 }
 
 img#img1 {
@@ -317,7 +321,6 @@ button:picture-input {
   cursor: pointer;
 }
 
-/* Change the background color of selected text to red */
 ::selection {
     background-color: red;
     color: #fff;
@@ -325,13 +328,12 @@ button:picture-input {
 
 .redpage {
   margin-top: 200px;
-  margin-left: 80px;
-  margin-right: 80px;
-  background-color: red;
+  margin-left: 20px;
+  margin-right: 20px;
   padding-top: 200px;
   font-family: SpaceGrotesk;
   font-size: 100px;
-  color: white;
+  color: red;
   padding-bottom: 200px;
   padding-left: 370px;
 }
@@ -342,7 +344,7 @@ button.signup {
   border: 1px solid red;
   border-radius: 30px;
   padding: 7px 20px;
-  font-size: 26px;
+  font-size: 30px;
   cursor: pointer;
   transition: background-color 0.3s ease;
 }
@@ -357,4 +359,19 @@ button.signup:hover {
 
 button.signup:active {
   text-decoration: none;
+}
+
+input[type="email"],
+input[type="password"] {
+  border-radius: 0;
+  border-color: transparent;
+  color: red;
+}
+
+input[type="email"]:focus,
+input[type="password"]:focus {
+  box-shadow: none;
+  outline: none;
+  border-color: transparent;
+  color: red;
 }

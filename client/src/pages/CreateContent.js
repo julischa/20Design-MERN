@@ -1,19 +1,16 @@
 import React, { useState } from "react";
 import axios from "axios";
+import Upload from "../assets/upload.png";
+import { useNavigate } from "react-router-dom";
 
-function CreateContent() {
-  // const [pictureUrl, setPictureUrl] = useState("");
+function CreateContent({ setIsOpen }) {
   const [pictureFile, setpictureFile] = useState(null);
   const [postData, setPostData] = useState({
-    // designerName: "",
     title: "",
     description: "",
   });
 
-  const person = {
-    name: "raul",
-    hair: "dark",
-  };
+  const navigate = useNavigate();
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -24,60 +21,33 @@ function CreateContent() {
     setpictureFile(e.target.files[0]);
   };
 
-  // const handlePictureChange = async (e) => {
   const createContentSubmit = async (e) => {
     e.preventDefault();
-    console.log("pictureFile", pictureFile);
-    console.log("postData", postData);
     try {
-      // const file = e.target.files[0];
-
       const formData = new FormData();
       formData.append("file", pictureFile);
       formData.append("title", postData.title);
       formData.append("description", postData.description);
-      // formData.append("folder", JSON.stringify(postData)); // Raul this transforms and object into a string, so it can be sent inside the request. Then later should be parsed back to object using JSON.parse(...)
-
-      // console.log('formData.get("folder")', formData.get("folder"));
-
-      //^console.log('formData.getAll("file")', formData.getAll("file"));
 
       const { data } = await axios.post(
         "http://localhost:5002/api/user/imageUpload",
         formData
       );
-
-      console.log("res", data);
-
-      //setPictureUrl(res.data.url);
+      setIsOpen(false);
+      navigate("/redpage");
     } catch (error) {
       console.log(error);
     }
   };
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-
-    // console.log("pictureUrl", pictureUrl);
-
-    // try {
-    //   const res = await axios.post("http://localhost:5002/api/posts", {
-    //     pictureUrl,
-    //     ...postData,
-    //   });
-    //   console.log(res.data);
-    //   // reset form
-    //   setPictureUrl("");
-    //   setPostData({ designerName: "", title: "", description: "" });
-    // } catch (error) {
-    //   console.log(error);
-    //}
-  };
-
   return (
     <div className="create-content">
       <label htmlFor="picture" className="custom-file-upload">
-        {pictureFile ? pictureFile.name : "select file"}
+        {pictureFile ? (
+          pictureFile.name
+        ) : (
+          <img src={Upload} alt="upload icon" id="upload-img" />
+        )}
       </label>
       <input
         id="picture"
@@ -89,7 +59,6 @@ function CreateContent() {
         style={{ display: "none" }}
       />
 
-      {/* <form onSubmit={handleSubmit}> */}
       <form onSubmit={createContentSubmit}>
         <div>
           <label htmlFor="title">Give your file a title:</label>
@@ -114,7 +83,7 @@ function CreateContent() {
         </div>
         <div></div>
         <button type="submit" className="submit-button">
-          UPLOAD
+          Upload
         </button>
       </form>
     </div>

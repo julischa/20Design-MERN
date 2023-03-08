@@ -30,6 +30,7 @@ app.use("/api/user", userRoutes);
 app.use("/api/designers", designerRoutes);
 app.use("/api/posts", postsRouter);
 
+//FIXME listen EADDRINUSE: address already in use :::5002
 const port = process.env.PORT || 5002;
 app.listen(port, () => {
   console.log("Server is running on " + port + "port");

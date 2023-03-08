@@ -40,6 +40,27 @@ function CreateContent({ setIsOpen }) {
     }
   };
 
+  const getHighlightedDescription = () => {
+    return postData.description.split("#").map((word, index) => {
+      const trimmedWord = word.trim().toLowerCase();
+      if (trimmedWord !== "") {
+        return (
+          <span
+            key={index}
+            style={{
+              border: "1px solid red",
+              padding: "2px",
+              marginRight: "8px",
+            }}
+          >
+            {trimmedWord}
+          </span>
+        );
+      }
+      return null;
+    });
+  };
+
   return (
     <div className="create-content">
       <label htmlFor="picture" className="custom-file-upload">
@@ -72,16 +93,18 @@ function CreateContent({ setIsOpen }) {
           />
         </div>
         <div>
-          <label htmlFor="description">& a description:</label>
+          <label htmlFor="description">give it at least 3 hashtags:</label>
           <textarea
             name="description"
             className="description-input"
             value={postData.description}
             onChange={handleInputChange}
             required
+            spellCheck="false"
+            style={{ whiteSpace: "pre-wrap" }}
           />
         </div>
-        <div></div>
+        <div>{getHighlightedDescription()}</div>
         <button type="submit" className="submit-button">
           Upload
         </button>

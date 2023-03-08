@@ -1,7 +1,10 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
+import queryString from "query-string";
+
 function Redpage() {
   const [posts, setPosts] = useState([]);
+  const [searchQuery, setSearchQuery] = useState("");
 
   useEffect(() => {
     const fetchAllPosts = async () => {
@@ -12,22 +15,52 @@ function Redpage() {
       }
     };
 
-    //call the fn
     fetchAllPosts();
   }, []);
 
+  useEffect(() => {
+    const { search } = queryString.parse(window.location.search); // parse search query parameter from URL
+    setSearchQuery(search);
+  }, []);
+
+  const filteredPosts = searchQuery
+    ? posts.filter(
+        (post) =>
+          post.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
+          post.description.toLowerCase().includes(searchQuery.toLowerCase())
+      )
+    : posts;
+
   return (
-    <div className="redpage">
-      {posts.length > 0
-        ? posts.map((singlePost) => {
-            return (
-              <article key={singlePost._id}>
-                <h2>{singlePost._id}</h2>
-                <p>{singlePost.description}</p>
-              </article>
-            );
-          })
-        : ""}
+    <div className="pin_container">
+      {posts.length > 0 &&
+        posts.map((singlePost, index) => {
+          const cardHeight =
+            index % 4 === 0
+              ? "var(--card_large)"
+              : index % 3 === 0
+              ? "var(--card_med)"
+              : "var(--card_small)";
+          return (
+            <article
+              key={singlePost._id}
+              className="card"
+              style={{ height: cardHeight }}
+            >
+              <div className="redpost-image-wrap">
+                <img
+                  className="redpost-image"
+                  src={singlePost.picture}
+                  alt={singlePost.title}
+                />
+                <div className="redpost-overlay">
+                  <p className="text-center">{singlePost.title}</p>
+                  <p className="text-center">{singlePost.description}</p>
+                </div>
+              </div>
+            </article>
+          );
+        })}
     </div>
   );
 }

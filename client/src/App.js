@@ -2,17 +2,48 @@ import "./App.css";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import DesignersList from "./components/DesignersList";
 import DesignerDetails from "./pages/DesignerDetails";
-import Footer from "./components/Footer";
+import React, { useEffect } from "react";
 import Register from "./components/Register";
-import React, { useState } from "react";
 import Messages from "./pages/Messages";
 import HomePage from "./pages/HomePage";
 import Redpage from "./components/Redpage";
 import LoginPage from "./pages/LoginPage";
 import Navbar from "./components/Navbar.js";
+// import Footer from "./components/Footer.js";
+import Parallax from "./components/Parallax";
 
 function App() {
-  const [isOpen, setIsOpen] = useState(false); // Define isOpen and setIsOpen using useState
+  useEffect(() => {
+    const redDot = document.createElement("div");
+    redDot.classList.add("red-dot");
+    document.body.appendChild(redDot);
+
+    let delayedMouseX = -100;
+    let delayedMouseY = -100;
+    let currentMouseX = -100;
+    let currentMouseY = -100;
+
+    function updateMousePosition(event) {
+      currentMouseX = event.clientX;
+      currentMouseY = event.clientY;
+    }
+
+    function updateDelayedMousePosition() {
+      delayedMouseX += (currentMouseX - delayedMouseX) * 0.01;
+      delayedMouseY += (currentMouseY - delayedMouseY) * 0.01;
+      redDot.style.left = delayedMouseX + "px";
+      redDot.style.top = delayedMouseY + "px";
+      requestAnimationFrame(updateDelayedMousePosition);
+    }
+
+    document.addEventListener("mousemove", updateMousePosition);
+    requestAnimationFrame(updateDelayedMousePosition);
+
+    return () => {
+      document.removeEventListener("mousemove", updateMousePosition);
+      document.body.removeChild(redDot);
+    };
+  }, []);
 
   return (
     <>
@@ -31,7 +62,7 @@ function App() {
           <Route path="/messages" element={<Messages />} />
         </Routes>
       </BrowserRouter>
-      <Footer />
+      {/* <Footer /> */}
     </>
   );
 }

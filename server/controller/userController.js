@@ -16,7 +16,7 @@ const getAllUsers = async (req, res) => {
 
 //NOTE  create users
 const signup = async (req, res) => {
-  //Sconsole.log("req", req.body);
+  console.log("req", req.body);
   if (!req.body.email) {
     res.status(501).json({
       msg: "Error - invalid email",
@@ -35,9 +35,6 @@ const signup = async (req, res) => {
         .status(400)
         .json({ message: "User already exists with this email" });
     } else {
-      //if the user does not exist, : 1st: hash user's password, 2nd: save the new user in the DB
-
-      //NOTE Hash user's password
       const mixedPassword = await hashedPasword(req.body.password);
       console.log("mixedPassword", mixedPassword);
 
@@ -93,6 +90,7 @@ const login = async (req, res) => {
       const token = generateToken(existingUser._id);
 
       const user = {
+        userName: existingUser.userName,
         email: existingUser.email,
         image: existingUser.image,
         joined: existingUser.createdAt,

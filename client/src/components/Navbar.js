@@ -10,7 +10,22 @@ import React, { useState } from "react";
 import CreateContent from "../pages/CreateContent";
 
 function Navibar() {
-  const [isOpen, setIsOpen] = useState(false); // Define isOpen state and setIsOpen function
+  const [isOpen, setIsOpen] = useState(false);
+  const [searchQuery, setSearchQuery] = useState("");
+  const [selectedEmoji, setSelectedEmoji] = useState(""); // add selectedEmoji state
+
+  // handle search query change
+  const handleSearchChange = (event) => {
+    setSearchQuery(event.target.value);
+  };
+
+  // handle search form submission
+  const handleSearchSubmit = (event) => {
+    event.preventDefault();
+    if (searchQuery) {
+      window.location.href = `/redpage?search=${searchQuery}`;
+    }
+  };
 
   return (
     <div style={{ display: "flex", justifyContent: "center" }}>
@@ -38,6 +53,9 @@ function Navibar() {
             type="text"
             placeholder="Search..."
             className="searchbar my-2 mb-2 mx-3"
+            value={searchQuery}
+            onChange={handleSearchChange}
+            onSubmit={handleSearchSubmit}
           />
           <img
             src={Search}
@@ -52,8 +70,14 @@ function Navibar() {
             }}
           />
         </div>
-        <img src={User} alt="Homepage" id="user-img" className="mx-3" />
-        <img src={Message} alt="Homepage" id="message-img" className="mx-1" />
+        <img
+          src={selectedEmoji || User}
+          alt="User"
+          id="user-img"
+          className="mx-3"
+        />{" "}
+        {/* display selectedEmoji if it exists, otherwise use default User image */}
+        <img src={Message} alt="Messages" id="message-img" className="mx-1" />
       </Navbar>
     </div>
   );

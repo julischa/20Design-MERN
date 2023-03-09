@@ -4,25 +4,31 @@ import axios from "axios";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 
 function Login() {
-  const history = useNavigate();
+  const navigate = useNavigate();
   const [formData, setFormData] = useState({ email: "", password: "" });
   const [showPassword, setShowPassword] = useState(false);
-  const [errorMessage, setErrorMessage] = useState("");
+  const [errorMessage, setErrorMessage] = useState(null);
 
   const handleInputChange = (event) => {
     const { name, value } = event.target;
     setFormData({ ...formData, [name]: value });
+    // console.log("formData", formData);
   };
 
   const handleFormSubmit = async (event) => {
     event.preventDefault();
     try {
-      const response = await axios.post("/api/users/login", formData);
+      const response = await axios.post(
+        "http://localhost:5002/api/user/login",
+        formData
+      );
+      console.log("response", response);
       const token = response.data.token;
       localStorage.setItem("token", token); // Store the token in localStorage
-      history.push("/");
+      navigate("/");
     } catch (error) {
-      setErrorMessage(error.response.data.message);
+      console.log("error", error);
+      setErrorMessage(error);
     }
   };
 

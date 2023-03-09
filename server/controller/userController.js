@@ -56,6 +56,7 @@ const signup = async (req, res) => {
 const login = async (req, res) => {
   // console.log("login request arrived");
   //console.log("req.body", req.body);
+  console.log("req.body", req.body);
 
   if (!req.body.email) {
     res.status(501).json({

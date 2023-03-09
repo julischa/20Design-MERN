@@ -31,37 +31,41 @@ function Redpage() {
       )
     : posts;
 
+  const reversedPosts = [...filteredPosts].reverse(); // make a copy of the filtered posts array and reverse it
+
   return (
-    <div className="pin_container">
-      {posts.length > 0 &&
-        posts.map((singlePost, index) => {
-          const cardHeight =
-            index % 4 === 0
-              ? "var(--card_large)"
-              : index % 3 === 0
-              ? "var(--card_med)"
-              : "var(--card_small)";
-          return (
-            <article
-              key={singlePost._id}
-              className="card"
-              style={{ height: cardHeight }}
-            >
-              <div className="redpost-image-wrap">
-                <img
-                  className="redpost-image"
-                  src={singlePost.picture}
-                  alt={singlePost.title}
-                />
-                <div className="redpost-overlay">
-                  <p className="text-center">{singlePost.title}</p>
-                  <p className="text-center">{singlePost.description}</p>
+    <>
+      <div className="pin_container">
+        {reversedPosts.length > 0 &&
+          reversedPosts.map((singlePost, index) => {
+            const cardHeight =
+              index % 4 === 0
+                ? "var(--card_large)"
+                : index % 3 === 0
+                ? "var(--card_med)"
+                : "var(--card_small)";
+            return (
+              <article
+                key={singlePost._id}
+                className="card"
+                style={{ height: cardHeight }}
+              >
+                <div className="redpost-image-wrap">
+                  <img
+                    className="redpost-image"
+                    src={singlePost.picture}
+                    alt={singlePost.title}
+                  />
+                  <div className="redpost-overlay">
+                    <p className="text-center">{singlePost.title}</p>
+                    <p className="text-center">{singlePost.description}</p>
+                  </div>
                 </div>
-              </div>
-            </article>
-          );
-        })}
-    </div>
+              </article>
+            );
+          })}
+      </div>
+    </>
   );
 }
 

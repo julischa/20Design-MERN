@@ -3,24 +3,18 @@ import Logo from "../assets/logo.png";
 
 const Footer = () => {
   return (
-    <div>
+    <div style={{ minHeight: "100vh", position: "relative" }}>
       <footer
         className="bg-transparent text-center mx-3 my-3"
         style={{
           position: "fixed",
           bottom: 0,
-          width: "100%",
+          left: 0,
+          right: 0,
+          backgroundColor: "white",
         }}
       >
-        <a className="btn btn-floating m-1" href="#!" role="button">
-          <i className="fab fa-google"></i>
-        </a>
-
-        <a className="btn btn-floating m-1" href="#!" role="button">
-          <i className="fab fa-instagram"></i>
-        </a>
-
-        <div className="text-center p-3"></div>
+        <div className="text-center">Copyright by Juli Schawert</div>
         <img src={Logo} alt="Homepage" id="logo-img" className="mb-4" />
       </footer>
     </div>

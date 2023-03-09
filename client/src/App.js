@@ -9,8 +9,8 @@ import HomePage from "./pages/HomePage";
 import Redpage from "./components/Redpage";
 import LoginPage from "./pages/LoginPage";
 import Navbar from "./components/Navbar.js";
-// import Footer from "./components/Footer.js";
-import Parallax from "./components/Parallax";
+import Footer from "./components/Footer.js";
+// import Parallax from "./components/Parallax";
 
 function App() {
   useEffect(() => {
@@ -29,8 +29,8 @@ function App() {
     }
 
     function updateDelayedMousePosition() {
-      delayedMouseX += (currentMouseX - delayedMouseX) * 0.01;
-      delayedMouseY += (currentMouseY - delayedMouseY) * 0.01;
+      delayedMouseX += (currentMouseX - delayedMouseX) * 0.1;
+      delayedMouseY += (currentMouseY - delayedMouseY) * 0.1;
       redDot.style.left = delayedMouseX + "px";
       redDot.style.top = delayedMouseY + "px";
       requestAnimationFrame(updateDelayedMousePosition);
@@ -62,7 +62,7 @@ function App() {
           <Route path="/messages" element={<Messages />} />
         </Routes>
       </BrowserRouter>
-      {/* <Footer /> */}
+      <Footer />
     </>
   );
 }

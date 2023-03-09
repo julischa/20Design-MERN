@@ -16,9 +16,10 @@ body {
 
 #text-para {
   margin-left: 120px;
-  margin-right:120px;
-  margin-top: 100px;
+  margin-right: 120px;
+  padding-top: 200px;
 }
+
 
 p {
   color: red;
@@ -43,7 +44,8 @@ p {
 }
 
 .landingtext {
-  margin-top: 40px;
+  margin-top: 600px;
+  margin-bottom: 400px;
   font-family: "SpaceGrotesk", sans-serif;
   font-weight: 200;
   font-size: 90px;
@@ -86,7 +88,7 @@ h2 {
 #redimages {
   display: block;
   margin: 0 auto;
-  margin-top: 50px;
+  margin-top: 240px;
 }
 
 #searchbar::placeholder {
@@ -133,15 +135,12 @@ img {
 }
 
 footer {
-  font-family: "itc-avant-garde-gothic-pro", sans-serif;
+  font-family: "SpaceGrotesk", sans-serif;
   font-weight: 200;
   font-size: 15px;
   font-style: normal;
   color: red;
-}
-
-footer:button {
-  outline: red;
+  position: inherit;
 }
 
 .custom-links a {
@@ -179,7 +178,6 @@ img#img2 {
   right: 50%;
   width: 27%;
   transform: translateX(-50%);
-  display: none;
 }
 
 img#img1 {
@@ -189,6 +187,18 @@ img#img1 {
 img#img2 {
   animation: slide-up-2 2.2s ease-in-out forwards;
 }
+
+img#img1:hover {
+  transform: rotate(45deg);
+  transition: transform 0.3s ease-in-out;
+}
+
+img#img2:hover {
+  transform: rotate(-45deg);
+  transition: transform 0.3s ease-in-out;
+}
+
+
 
 @keyframes slide-up-1 {
   0% {
@@ -208,24 +218,25 @@ img#img2 {
   }
 }
 
-.modal-open{
-    font-family: "itc-avant-garde-gothic-pro", sans-serif;
-    font-weight: 300;
-    font-size: 20px;
-    position: absolute;
-    background-color: #faf5ee!important;
-    top: 40%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 700px;
-    height: 400px;
-    padding: 3rem;
-    z-index: 50;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+.modal-open {
+  font-family: "itc-avant-garde-gothic-pro", sans-serif;
+  font-weight: 300;
+  font-size: 20px;
+  position: absolute;
+  background-color: #faf5ee!important;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 700px;
+  height: 400px;
+  padding: 3rem;
+  z-index: 50;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
+
 
 
 .overlay {
@@ -402,7 +413,7 @@ input[type="password"]:focus {
 
 
 :root {
-  --card_width: 250px;
+  --card_width: 240px;
   --row_increment: 30px;
   --card_border_radius: 0px;
 }
@@ -577,3 +588,4 @@ input[type="password"]:focus {
   justify-content: center;
   height: 100%;
 }
+

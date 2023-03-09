@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
+import { Link } from "react-router-dom";
 
 const Register = () => {
   const [userName, setUserName] = useState("");
@@ -48,6 +49,7 @@ const Register = () => {
             onChange={(e) => setEmail(e.target.value)}
             className="form-control"
             required
+            style={{ color: "red" }}
           />
         </div>
         <div className="form-group">
@@ -100,6 +102,9 @@ const Register = () => {
       <button className="text-center" type="submit" onClick={handleSubmit}>
         Register
       </button>
+      <Link to="/login" style={{ textDecoration: "none", color: "red" }}>
+        Already signed up? Login instead.
+      </Link>
     </div>
   );
 };

@@ -12,7 +12,9 @@ export default function Modal({ open, children, onClose }) {
         <button className="modal-close" onClick={onClose}>
           <img src={Create} alt="Create New" id="close-img" />
         </button>
-        {children}
+        <div style={{ display: "flex", justifyContent: "center" }}>
+          {children}
+        </div>
       </div>
     </>,
     document.getElementById("portal")

@@ -81,7 +81,7 @@ function Login() {
         Sign In
       </button>
       <span style={{ color: "red" }}>
-        Don't have an account?{" "}
+        No account?{" "}
         <Link to="/register" style={{ textDecoration: "none", color: "red" }}>
           <br></br>→ Sign up here
         </Link>

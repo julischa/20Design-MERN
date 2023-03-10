@@ -16,7 +16,7 @@ export const AuthContextProvider = (props) => {
     console.log("formData", formData);
     try {
       const { data } = await axios.post(
-        "http://20-design-mern.vercel.app/api/user/login",
+        "https://20-design-mern.vercel.app/api/user/login",
         formData
       );
 
@@ -61,7 +61,7 @@ export const AuthContextProvider = (props) => {
   const signUp = async (userName, email, password) => {
     try {
       const { data } = await axios.post(
-        "http://20-design-mern.vercel.app/api/user/signup",
+        "https://20-design-mern.vercel.app/api/user/signup",
         {
           userName,
           email,

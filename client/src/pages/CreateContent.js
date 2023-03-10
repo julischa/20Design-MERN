@@ -30,7 +30,7 @@ function CreateContent({ setIsOpen }) {
       formData.append("description", postData.description);
 
       const { data } = await axios.post(
-        "http://localhost:5002/api/user/imageUpload",
+        "https://20-design-mern.vercel.app/api/user/imageUpload",
         formData
       );
       setIsOpen(false);

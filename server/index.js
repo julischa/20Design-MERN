@@ -19,8 +19,7 @@ app.use(
 );
 
 var corsOptions = {
-  origin: "http://localhost:3000",
-  credentials: true,
+  origin: "https://20-design.vercel.app/",
 };
 
 app.use(cors(corsOptions));

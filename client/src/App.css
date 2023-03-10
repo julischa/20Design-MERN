@@ -228,7 +228,7 @@ img#img2:hover {
   font-size: 20px;
   position: absolute;
   background-color: #faf5ee!important;
-  top: 50%;
+  top: 0px;
   left: 50%;
   transform: translate(-50%, -50%);
   width: 700px;
@@ -428,7 +428,7 @@ input[type="password"]:focus {
   width: 70vw;
   position: absolute;
   left: 50%;
-  padding-top: 10%;
+  padding-top: 10px;
   transform: translateX(-50%);
   display: grid;
   grid-template-columns: repeat(auto-fill, var(--card_width));

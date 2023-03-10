@@ -11,7 +11,9 @@ function Redpage() {
 
   useEffect(() => {
     const fetchAllPosts = async () => {
-      const { data } = await axios.get("http://localhost:5002/api/posts/all");
+      const { data } = await axios.get(
+        "https://20-design-mern.vercel.app/api/posts/all"
+      );
 
       if (data) {
         setPosts(data.allPosts);

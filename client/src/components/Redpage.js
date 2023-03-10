@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
-// FIXME if you really need to use query-string , then do a npm install query-string but in the client folder
-// import queryString from "query-string";
+import queryString from "query-string";
 
 function Redpage() {
   const [posts, setPosts] = useState([]);

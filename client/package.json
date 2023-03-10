@@ -8,6 +8,7 @@
     "@testing-library/user-event": "^13.5.0",
     "axios": "^1.3.3",
     "bootstrap": "^5.2.3",
+    "query-string": "^8.1.0",
     "react": "^18.2.0",
     "react-adobe-fonts": "^0.1.0",
     "react-bootstrap": "^2.7.2",

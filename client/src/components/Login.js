@@ -35,6 +35,7 @@ function Login() {
         <div className="form-group">
           <label htmlFor="email">Email</label>
           <input
+            style={{ color: "red" }}
             type="email"
             id="email"
             name="email"

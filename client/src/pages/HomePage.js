@@ -2,10 +2,12 @@ import Img1 from "../assets/img1.jpg";
 import Img2 from "../assets/img2.jpg";
 import { useNavigate } from "react-router-dom";
 import Parallax from "../components/Parallax";
-import Redpage from "../components/Redpage";
-import { useEffect, useState } from "react";
+// import Redpage from "../components/Redpage";
+import { useContext, useEffect, useState } from "react";
+import { AuthContext } from "../context/AuthContext";
 
 function HomePage() {
+  const { user } = useContext(AuthContext);
   const navigate = useNavigate();
   const [isLoggedIn, setIsLoggedIn] = useState(false);
 
@@ -27,17 +29,21 @@ function HomePage() {
   };
 
   return (
-    <div className="d-flex flex-column align-items-center justify-content-center vh-100">
+    <div className="d-flex flex-column align-items-center justify-content-center vh-100 homepage">
       <div className="landingtext text-center">
-        Create & share <br></br>pins with your friends
+        Create &#38; share <br></br>pins with your friends
         <br></br>
         {isLoggedIn ? (
           <button className="signup mb-5" onClick={logout}>
             Logout
           </button>
-        ) : (
+        ) : !user ? (
           <button className="signup mb-5" onClick={handleSignUp}>
             Sign up
+          </button>
+        ) : (
+          <button className="signup mb-5" onClick={() => navigate("/redpage")}>
+            Create Pin
           </button>
         )}
         <span></span>

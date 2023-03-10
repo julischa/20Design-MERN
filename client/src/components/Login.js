@@ -1,6 +1,5 @@
 import React, { useContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import axios from "axios";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import { AuthContext } from "../context/AuthContext";
 
@@ -29,13 +28,13 @@ function Login() {
 
   useEffect(() => {
     if (user) {
-      navigate("/");
+      navigate("/redpage");
     }
   }, [user]);
 
   return (
     <div className="flex flex-col items-center">
-      <h1 className="text-center mb-4">Login</h1>
+      <h1 className="text-center mb-4">Sign in to your Account</h1>
       <form onSubmit={handleSubmit} className="mb-4">
         <div className="form-group">
           <label className="text-center" id="label" htmlFor="email">

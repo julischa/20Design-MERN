@@ -59,12 +59,35 @@ export const AuthContextProvider = (props) => {
     }
   };
 
+  const signUp = async (userName, email, password) => {
+    try {
+      const { data } = await axios.post(
+        "http://localhost:5002/api/user/signup",
+        {
+          userName,
+          email,
+          password,
+        }
+      );
+
+      console.log(data);
+      if (data) {
+        setUser(data.user);
+      }
+      // display success message to user
+    } catch (error) {
+      console.log(error.response.data);
+      setErrors(error.response.data.message);
+    }
+  };
+
   // 4. Move state and function
 
   return (
     <AuthContext.Provider
       value={{
         loginFunction,
+        signUp,
         logout,
         isUser,
         user,

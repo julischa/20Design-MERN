@@ -1,18 +1,22 @@
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Navbar, FormControl } from "react-bootstrap";
 import Logo from "../assets/logo.png";
-import User from "../assets/user.png";
+import defaultUser from "../assets/user.png";
 import Message from "../assets/message.png";
 import Create from "../assets/create.png";
 import Search from "../assets/search.png";
+import userPic from "../assets/loggedin.png";
 import Modal from "./Modal";
-import React, { useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import CreateContent from "../pages/CreateContent";
+import { AuthContext } from "../context/AuthContext";
+import { Link, useNavigate } from "react-router-dom";
 
 function Navibar() {
+  const { user, logout } = useContext(AuthContext);
+  const navigate = useNavigate();
   const [isOpen, setIsOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState("");
-  const [selectedEmoji, setSelectedEmoji] = useState(""); // add selectedEmoji state
 
   // handle search query change
   const handleSearchChange = (event) => {
@@ -27,12 +31,20 @@ function Navibar() {
     }
   };
 
+  const handleLogout = () => {
+    logout();
+  };
+
+  useEffect(() => {
+    if (!user) navigate("/");
+  }, [user]);
+
   return (
     <div style={{ display: "flex", justifyContent: "center" }}>
       <Navbar className="mx-3 text-center my-3 round-corners" bg="transparent">
-        <a href="/">
+        <Link to="/">
           <img src={Logo} alt="Homepage" id="logo-img" />
-        </a>
+        </Link>
         <div>
           <div onClick={() => setIsOpen(true)}>
             <img src={Create} alt="Create New" id="create-img" />
@@ -70,14 +82,23 @@ function Navibar() {
             }}
           />
         </div>
+
         <img
-          src={selectedEmoji || User}
+          src={user ? userPic : defaultUser}
           alt="User"
           id="user-img"
           className="mx-3"
-        />{" "}
-        {/* display selectedEmoji if it exists, otherwise use default User image */}
-        <img src={Message} alt="Messages" id="message-img" className="mx-1" />
+        />
+        {user && (
+          <button
+            type="submit"
+            style={{ textDecoration: "none", color: "red" }}
+            onClick={handleLogout}
+          >
+            Logout
+          </button>
+        )}
+        <img src={Message} alt="Messages" id="message-img" className="mx-2" />
       </Navbar>
     </div>
   );

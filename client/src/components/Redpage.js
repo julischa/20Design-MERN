@@ -1,8 +1,11 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import axios from "axios";
 import queryString from "query-string";
+import { AuthContext } from "../context/AuthContext";
+import CreateContent from "../pages/CreateContent";
 
 function Redpage() {
+  const { user } = useContext(AuthContext);
   const [posts, setPosts] = useState([]);
   const [searchQuery, setSearchQuery] = useState("");
 
@@ -35,6 +38,9 @@ function Redpage() {
 
   return (
     <>
+      {user && (
+        <h2 className="text-center my-5">Welcome back, {user.userName} ❤️‍🔥</h2>
+      )}
       <div className="pin_container">
         {reversedPosts.length > 0 &&
           reversedPosts.map((singlePost, index) => {

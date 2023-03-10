@@ -43,8 +43,8 @@ const signup = async (req, res) => {
         email: req.body.email,
         password: mixedPassword, //NOTE hashedPassword
       });
-      const savedUser = await newUser.save();
-      res.status(201).json({ message: "User created successfully", savedUser });
+      const user = await newUser.save();
+      res.status(201).json({ message: "User created successfully", user });
     }
   } catch (error) {
     console.log("error :>> ", error);

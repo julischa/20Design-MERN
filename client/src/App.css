@@ -218,6 +218,10 @@ img#img2:hover {
   }
 }
 
+.homepage{
+  position: relative;
+}
+
 .modal-open {
   font-family: "itc-avant-garde-gothic-pro", sans-serif;
   font-weight: 300;
@@ -421,7 +425,7 @@ input[type="password"]:focus {
 .pin_container {
   margin: 0;
   padding: 0;
-  width: 80vw;
+  width: 70vw;
   position: absolute;
   left: 50%;
   padding-top: 10%;
@@ -531,8 +535,33 @@ input[type="password"]:focus {
   background-position: center;
 }
 
+
+.redpost-overlay::after {
+  content: "☆";
+  position: absolute;
+  top: 240px;
+  left: 20px;
+  color: red;
+  font-size: 40px;
+  font-weight: lighter;
+}
+
 .card:hover .redpost-overlay {
   opacity: 1;
+}
+
+.inputPassword{
+  position: relative;
+}
+.eyeIcon{
+  position: absolute;
+  top: 50%;
+  transform: translate(-50%,-50%);
+  right: 0;
+}
+
+span {
+  font-family: "SpaceGrotesk", sans-serif;
 }
 
 /* Media query for medium-sized screens */

@@ -97,13 +97,18 @@ const login = async (req, res) => {
         joined: existingUser.createdAt,
       };
 
-      res.status(201).json({
+      res.status(200).json({
         msg: "Successfully logged in",
-        user: user,
+        user,
         token,
       });
     }
-  } catch {}
+  } catch (error) {
+    console.log(error);
+    res.status(500).json({
+      msg: "Fatal error",
+    });
+  }
 };
 
 //NOTE img upload

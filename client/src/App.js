@@ -10,6 +10,7 @@ import Redpage from "./components/Redpage";
 import LoginPage from "./pages/LoginPage";
 import Navbar from "./components/Navbar.js";
 import Footer from "./components/Footer.js";
+import { AuthContextProvider } from "./context/AuthContext";
 // import Parallax from "./components/Parallax";
 
 function App() {
@@ -29,8 +30,8 @@ function App() {
     }
 
     function updateDelayedMousePosition() {
-      delayedMouseX += (currentMouseX - delayedMouseX) * 0.1;
-      delayedMouseY += (currentMouseY - delayedMouseY) * 0.1;
+      delayedMouseX += (currentMouseX - delayedMouseX) * 0.03;
+      delayedMouseY += (currentMouseY - delayedMouseY) * 0.03;
       redDot.style.left = delayedMouseX + "px";
       redDot.style.top = delayedMouseY + "px";
       requestAnimationFrame(updateDelayedMousePosition);
@@ -46,7 +47,7 @@ function App() {
   }, []);
 
   return (
-    <>
+    <AuthContextProvider>
       <BrowserRouter>
         <Navbar />
         <Routes>
@@ -63,7 +64,7 @@ function App() {
         </Routes>
       </BrowserRouter>
       <Footer />
-    </>
+    </AuthContextProvider>
   );
 }
 

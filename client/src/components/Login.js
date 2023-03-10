@@ -1,10 +1,13 @@
-import React, { useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
+import { AuthContext } from "../context/AuthContext";
 
 function Login() {
   const navigate = useNavigate();
+  //extract login fn from context
+  const { user, loginFunction } = useContext(AuthContext);
   const [formData, setFormData] = useState({ email: "", password: "" });
   const [showPassword, setShowPassword] = useState(false);
   const [errorMessage, setErrorMessage] = useState(null);
@@ -15,30 +18,25 @@ function Login() {
     // console.log("formData", formData);
   };
 
-  const handleFormSubmit = async (event) => {
-    event.preventDefault();
-    try {
-      const response = await axios.post(
-        "http://localhost:5002/api/user/login",
-        formData
-      );
-      console.log("response", response);
-      const token = response.data.token;
-      localStorage.setItem("token", token); // Store the token in localStorage
-      navigate("/");
-    } catch (error) {
-      console.log("error", error);
-      setErrorMessage(error);
-    }
-  };
-
   if (localStorage.getItem("token")) {
   }
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    loginFunction(formData);
+    setFormData({ email: "", password: "" });
+  };
+
+  useEffect(() => {
+    if (user) {
+      navigate("/");
+    }
+  }, [user]);
 
   return (
     <div className="flex flex-col items-center">
       <h1 className="text-center mb-4">Login</h1>
-      <form onSubmit={handleFormSubmit} className="mb-4">
+      <form onSubmit={handleSubmit} className="mb-4">
         <div className="form-group">
           <label className="text-center" id="label" htmlFor="email">
             Email

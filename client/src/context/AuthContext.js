@@ -1,7 +1,6 @@
 // 1. Import hook
+import axios from "axios";
 import React, { createContext, useRef, useState } from "react";
-import { useNavigate } from "react-router-dom";
-import UserController from "../controllers/UserController";
 
 // 2. Create Context / Store
 
@@ -13,23 +12,18 @@ export const AuthContextProvider = (props) => {
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
   const [errors, setErrors] = useState(null);
-  const email = useRef();
-  const password = useRef();
-  const redirectTo = useNavigate();
 
-  const userController = new UserController();
-
-  const login = async () => {
+  const loginFunction = async (formData) => {
+    console.log("formData", formData);
     try {
-      const { token, user } = await userController.login({
-        email: email.current.value,
-        password: password.current.value,
-      });
-      localStorage.setItem("token", token);
-      setIsUser(true);
-      setErrors(null);
-      setUser(user);
-      redirectTo("/profile");
+      const { data } = await axios.post(
+        "http://localhost:5002/api/user/login",
+        formData
+      );
+
+      if (data) {
+        setUser(data.user);
+      }
     } catch (error) {
       setErrors(error.message);
     }
@@ -39,12 +33,11 @@ export const AuthContextProvider = (props) => {
     localStorage.removeItem("token");
     setIsUser(false);
     setUser(null);
-    redirectTo("/");
   };
 
   const getPersonalProfile = async () => {
     try {
-      const user = await userController.getPersonalProfile();
+      //const user = await userController.getPersonalProfile();
       setUser(user);
     } catch (error) {
       console.log("Error getting profile", error);
@@ -71,14 +64,12 @@ export const AuthContextProvider = (props) => {
   return (
     <AuthContext.Provider
       value={{
-        login,
+        loginFunction,
         logout,
         isUser,
         user,
         setUser,
         getPersonalProfile,
-        email,
-        password,
         loading,
         errors,
         setErrors,

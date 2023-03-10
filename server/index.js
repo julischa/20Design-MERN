@@ -19,7 +19,7 @@ app.use(
 );
 
 var corsOptions = {
-  origin: "https://20-design.vercel.app/",
+  origin: "https://20-design.vercel.app",
 };
 
 app.use(cors(corsOptions));

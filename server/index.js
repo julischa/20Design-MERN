@@ -18,8 +18,12 @@ app.use(
   })
 );
 
-var corsOptions = {
-  origin: "https://20-design.vercel.app",
+// var corsOptions = {
+//   origin: "https://20-design.vercel.app",
+// };
+
+const corsOptions = {
+  origin: "http://localhost:3000/",
 };
 
 app.use(cors(corsOptions));

@@ -2,7 +2,6 @@ import { useContext, useEffect, useState } from "react";
 import axios from "axios";
 import queryString from "query-string";
 import { AuthContext } from "../context/AuthContext";
-import CreateContent from "../pages/CreateContent";
 
 function Redpage() {
   const { user } = useContext(AuthContext);

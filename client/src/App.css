@@ -228,7 +228,7 @@ img#img2:hover {
   font-size: 20px;
   position: absolute;
   background-color: #faf5ee!important;
-  top: 0px;
+  top: 450px;
   left: 50%;
   transform: translate(-50%, -50%);
   width: 700px;
@@ -618,3 +618,41 @@ span {
   height: 100%;
 }
 
+.email-input::-webkit-input-placeholder {
+  color: red;
+}
+
+.email-input:-moz-placeholder {
+  color: red;
+}
+
+.email-input::-moz-placeholder {
+  color: red;
+}
+
+.email-input:-ms-input-placeholder {
+  color: red;
+}
+
+.email-input:focus {
+  outline: none;
+  border-color: pink;
+  box-shadow: 0 0 0 0.2rem rgba(255, 0, 153, 0.25);
+  color: red;
+}
+
+.email-input:-webkit-autofill,
+.email-input:-webkit-autofill:hover,
+.email-input:-webkit-autofill:focus,
+.email-input:-webkit-autofill:active {
+  -webkit-box-shadow: 0 0 0 30px white inset !important;
+  box-shadow: 0 0 0 30px white inset !important;
+  color: red !important;
+}
+
+.email-input:-webkit-autofill,
+.email-input:-webkit-autofill:hover,
+.email-input:-webkit-autofill:focus,
+.email-input:-webkit-autofill:active {
+  color: red!important;
+}

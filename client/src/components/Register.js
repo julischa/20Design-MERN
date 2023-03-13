@@ -136,7 +136,7 @@ const Register = () => {
       </button>
       <Link to="/login" style={{ textDecoration: "none", color: "red" }}>
         <span className="text-center">
-          Already registered? <br></br>→ Sign in instead.
+          Already registered? <br></br>→ Sign in instead
         </span>
       </Link>
     </div>

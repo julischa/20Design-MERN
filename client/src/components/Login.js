@@ -35,13 +35,12 @@ function Login() {
         <div className="form-group">
           <label htmlFor="email">Email</label>
           <input
-            style={{ color: "red" }}
             type="email"
             id="email"
             name="email"
             value={formData.email}
             onChange={handleInputChange}
-            className="form-control"
+            className="form-control email-input"
             required
           />
         </div>
@@ -81,9 +80,9 @@ function Login() {
         Sign In
       </button>
       <span style={{ color: "red" }}>
-        No account?{" "}
+        No account yet?{" "}
         <Link to="/register" style={{ textDecoration: "none", color: "red" }}>
-          <br></br>→ Sign up here
+          <br />→ Sign up here
         </Link>
       </span>
     </div>

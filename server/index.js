@@ -22,11 +22,12 @@ app.use(
 //   origin: "https://20-design.vercel.app",
 // };
 
-const corsOptions = {
-  origin: "http://localhost:3000/",
-};
+// const corsOptions = {
+//   origin: "http://localhost:3000/",
+// };
 
-app.use(cors(corsOptions));
+// app.use(cors(corsOptions));
+app.use(cors());
 
 app.use("/api", router);
 app.use("/api/user", userRoutes);

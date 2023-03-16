@@ -1,5 +1,6 @@
 import axios from "axios";
 import React, { createContext, useState } from "react";
+import { serverURL } from "../utils/serverURL";
 
 // 2. Create Context / Store
 
@@ -16,7 +17,8 @@ export const AuthContextProvider = (props) => {
     console.log("formData", formData);
     try {
       const { data } = await axios.post(
-        "https://20-design-mern.vercel.app/api/user/login",
+        `${serverURL}/api/user/login`,
+        // "https://20-design-mern.vercel.app/api/user/login",
         formData
       );
 

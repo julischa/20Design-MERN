@@ -47,7 +47,7 @@ function Navibar() {
         </Link>
         <div>
           <div onClick={() => setIsOpen(true)}>
-            <img src={Create} alt="Create New" id="create-img" />
+            <img src={Create} alt="Create New" id="create-img" /> <p>Create</p>
           </div>
           {isOpen && (
             <Modal

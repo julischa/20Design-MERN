@@ -37,10 +37,6 @@ const getAllDesigners = async (req, response) => {
 };
 
 const getDesignersByName = async (req, res) => {
-  // console.log("req", req);
-  //when we fetch http://localhost:5002/api/designers/singleDesigner/:alvar  , "alvar" will arrive in the field req.params.name
-
-  // console.log("req.query.birth>>>>", req.query.birth);
   console.log("req.query", req.query);
   console.log("req.params", req.params);
   const designerName = req.params.name;
@@ -64,7 +60,6 @@ const getDesignersByName = async (req, res) => {
     }
   } else {
     try {
-      // console.log("designerName before try", designerName);
       const designer = await designerModel.findOne({ name: req.params.name });
       console.log("designer", designer);
       if (designer.length === 0) {
@@ -84,10 +79,5 @@ const getDesignersByName = async (req, res) => {
     }
   }
 };
-
-//Raul 2.create a function that receives the information for the new content in the body.
-//Raul 3. inside that function , create a new object, using the designersMOdel, and save it to your designers collectio.
-//Raul 4. send response to the client
-//Raul 5. Check with postman
 
 export { getAllDesigners, getDesignersByName };

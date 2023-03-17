@@ -2,7 +2,6 @@ import Img1 from "../assets/img1.jpg";
 import Img2 from "../assets/img2.jpg";
 import { useNavigate } from "react-router-dom";
 import Parallax from "../components/Parallax";
-// import Redpage from "../components/Redpage";
 import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../context/AuthContext";
 

@@ -14,7 +14,7 @@ const Footer = () => {
           backgroundColor: "white",
         }}
       >
-        <div className="text-center small">Copyright by Juli Schawert</div>
+        <div className="text-center small">20DESIGN</div>
         <img src={Logo} alt="Homepage" id="logo-img" className="mb-4" />
       </footer>
     </div>

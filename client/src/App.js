@@ -9,6 +9,7 @@ import Navbar from "./components/Navbar.js";
 import Login from "./components/Login";
 import Footer from "./components/Footer.js";
 import { AuthContextProvider } from "./context/AuthContext";
+import Github from "./components/Github";
 // import Parallax from "./components/Parallax";
 
 function App() {
@@ -58,6 +59,7 @@ function App() {
         </Routes>
       </BrowserRouter>
       <Footer />
+      <Github />
     </AuthContextProvider>
   );
 }

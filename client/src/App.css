@@ -656,3 +656,197 @@ span {
 .email-input:-webkit-autofill:active {
   color: red!important;
 }
+
+@media screen and (min-width: 768px) {
+:root {
+--row_increment: 15px;
+--card_small: 33px;
+--card_med: 45px;
+--card_large: 60px;
+}
+
+.card {
+height: var(--card_med);
+}
+}
+
+@media screen and (min-width: 1024px) {
+:root {
+--row_increment: 20px;
+--card_small: 45px;
+--card_med: 60px;
+--card_large: 80px;
+}
+
+.card {
+height: var(--card_large);
+}
+}
+
+@media screen and (max-width: 576px) {
+body {
+margin-left: 20px;
+margin-right: 20px;
+}
+
+#text-para {
+margin-left: 20px;
+margin-right: 20px;
+padding-top: 100px;
+}
+
+img#img1 {
+  position: absolute;
+  bottom: 0;
+  right: 30%;
+  width: 48%;
+  transform: translateX(50%);
+}
+
+img#img2 {
+  position: absolute;
+  bottom: 0;
+  right: 70%;
+  width: 48%;
+  transform: translateX(-50%);
+}
+
+img#img1 {
+  animation: slide-up-1 2.2s ease-in-out forwards;
+}
+
+img#img2 {
+  animation: slide-up-2 2.2s ease-in-out forwards;
+}
+
+.landingtext {
+margin-top: 300px;
+margin-bottom: 200px;
+font-size: 50px;
+}
+
+h1 {
+font-size: 18px;
+}
+
+h2 {
+font-size: 18px;
+}
+
+#searchbar {
+width: 90%;
+font-size: 16px;
+}
+
+img {
+width: 80px;
+}
+
+#message-img {
+width: 24px;
+}
+
+#upload-img {
+width: 50px;
+}
+
+#search-img {
+width: 26px;
+}
+
+#user-img {
+display: none; 
+}
+
+#create-img {
+width: 16px;
+}
+
+#logo-img {
+display: none; 
+}
+
+footer {
+font-size: 12px;
+}
+
+.custom-links a {
+margin: 0 4px;
+padding: 2px 4px;
+}
+
+.redpage {
+margin-top: 100px;
+margin-left: 10px;
+margin-right: 10px;
+padding-top: 100px;
+font-size: 50px;
+padding-bottom: 100px;
+padding-left: 150px;
+}
+
+button.signup {
+font-size: 30px;
+padding: 5px 10px;
+}
+
+.navbar {
+font-size: 16px;
+}
+
+.custom-file-upload {
+font-size: 16px;
+}
+
+.pin_container {
+width: 100%;
+grid-template-columns: repeat(auto-fill, 170px);
+grid-auto-rows: 200px;
+grid-row-gap: 70px;
+grid-gap: 10px;
+}
+
+.card {
+height: 120px;
+width: 170px;
+}
+
+.card img {
+height: 120px;
+}
+
+.redpost-overlay {
+bottom: 120px;
+top: 0;
+}
+
+.redpost-overlay::after {
+font-size: 30px;
+top: 80px;
+left: 10px;
+}
+
+.modal-open {
+width: 90%;
+height: 400px;
+top: 50%;
+left: 50%;
+transform: translate(-50%, -50%);
+font-size: 16px;
+padding: 2rem;
+}
+
+input[type="email"],
+input[type="password"] {
+font-size: 16px;
+}
+
+.eyeIcon {
+right: 10px;
+}
+
+.red-dot {
+width: 40px;
+height: 40px;
+}
+}

@@ -35,7 +35,7 @@ function Redpage() {
       )
     : posts;
 
-  const reversedPosts = [...filteredPosts].reverse(); // make a copy of the filtered posts array and reverse it
+  const reversedPosts = [...filteredPosts].reverse();
 
   return (
     <>

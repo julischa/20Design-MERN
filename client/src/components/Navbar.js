@@ -2,7 +2,6 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import { Navbar, FormControl } from "react-bootstrap";
 import Logo from "../assets/logo.png";
 import defaultUser from "../assets/user.png";
-import Message from "../assets/message.png";
 import Create from "../assets/create.png";
 import Search from "../assets/search.png";
 import userPic from "../assets/loggedin.png";
@@ -98,7 +97,6 @@ function Navibar() {
             Logout
           </button>
         )}
-        <img src={Message} alt="Messages" id="message-img" className="mx-2" />
       </Navbar>
     </div>
   );

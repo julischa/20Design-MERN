@@ -58,7 +58,7 @@ function App() {
           <Route path="/messages" element={<Messages />} />
         </Routes>
       </BrowserRouter>
-      <Footer />
+      {/* <Footer /> */}
       <Github />
     </AuthContextProvider>
   );

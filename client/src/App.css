@@ -1,3 +1,8 @@
+*{
+  box-sizing: border-box;
+  background: rgb(0, 100, 0, 0.1) !important;
+}
+
 body {
   background-color: #f6f7ef!important;
   margin-left: 50px;

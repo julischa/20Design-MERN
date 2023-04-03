@@ -457,6 +457,12 @@ input[type="password"]:focus {
   opacity: 0;
 }
 
+.card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
 .card:nth-child(1) {
   animation: fade-in 1s ease 0.1s forwards;
 }
@@ -815,10 +821,6 @@ grid-gap: 10px;
 .card {
 height: 120px;
 width: 170px;
-}
-
-.card img {
-height: 120px;
 }
 
 .redpost-overlay {

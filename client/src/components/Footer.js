@@ -1,22 +1,47 @@
 import React from "react";
-import Logo from "../assets/logo.png";
+import Gitcat from "../assets/github.png";
 
 const Footer = () => {
   return (
-    <div style={{ minHeight: "100vh", position: "relative" }}>
-      <footer
-        className="bg-transparent text-center mx-3 my-3"
+    <div>
+      <div
+        className="footer"
         style={{
-          position: "fixed",
-          bottom: 0,
-          left: 0,
-          right: 0,
-          backgroundColor: "white",
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
         }}
       >
-        <div className="text-center small">20DESIGN</div>
-        <img src={Logo} alt="Homepage" id="logo-img" className="mb-4" />
-      </footer>
+        <h1 style={{ display: "flex", alignItems: "center" }}>
+          <a
+            href="https://github.com/julischa"
+            target="_blank"
+            rel="noopener noreferrer"
+            style={{
+              color: "red",
+              textDecoration: "none",
+              display: "flex",
+              alignItems: "center",
+            }}
+          >
+            <img
+              src={Gitcat}
+              alt="Github"
+              id="github"
+              className="github-icon"
+              style={{
+                width: "30px",
+                marginRight: "10px",
+                marginBottom: "7px",
+              }}
+            />
+            <span style={{ marginRight: "10px" }}>
+              {new Date().getFullYear()}
+            </span>
+            <span>juli schawert</span>
+          </a>
+        </h1>
+      </div>
     </div>
   );
 };

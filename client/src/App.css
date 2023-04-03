@@ -1,7 +1,7 @@
-*{
+/* *{
   box-sizing: border-box;
   background: rgb(0, 100, 0, 0.1) !important;
-}
+} */
 
 body {
   background-color: #f6f7ef!important;
@@ -17,6 +17,19 @@ body {
   font-family: "SpaceGrotesk", sans-serif;
   font-weight: 300;
   font-size: 20px;
+}
+
+.page-container {
+  display: grid;
+  margin-bottom: 700px;
+}
+
+.github-icon {
+  transition: transform 0.5s ease-in-out;
+}
+
+.github-icon:hover {
+  transform: scale(1.2);
 }
 
 #text-para {
@@ -139,15 +152,6 @@ img {
   padding-right: 20px; 
 }
 
-footer {
-  font-family: "SpaceGrotesk", sans-serif;
-  font-weight: 200;
-  font-size: 15px;
-  font-style: normal;
-  color: red;
-  position: inherit;
-}
-
 .custom-links a {
   color: red;
   text-decoration: none;
@@ -256,10 +260,6 @@ img#img2:hover {
     bottom: 0;
     background-color: rgba(146, 145, 145, 0.7);
     z-index: 20;
-}
-
-footer {
-  position: static;
 }
 
 .modal-close {
@@ -441,6 +441,7 @@ input[type="password"]:focus {
   justify-content: center;
   grid-gap: 10px;
   grid-row-gap: 120px;
+  background-color: #f6f7ef;
 }
 
 .card {

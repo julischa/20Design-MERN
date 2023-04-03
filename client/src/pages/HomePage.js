@@ -4,14 +4,21 @@ import { useNavigate } from "react-router-dom";
 import Parallax from "../components/Parallax";
 import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../context/AuthContext";
+import Modal from "../components/Modal";
+import CreateContent from "./CreateContent";
 
 function HomePage() {
   const { user } = useContext(AuthContext);
   const navigate = useNavigate();
   const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [isOpen, setIsOpen] = useState(false);
 
   function handleSignUp() {
     navigate("/register");
+  }
+
+  function handleCreatePin() {
+    setIsOpen(true);
   }
 
   useEffect(() => {
@@ -41,7 +48,7 @@ function HomePage() {
             Sign up
           </button>
         ) : (
-          <button className="signup mb-5" onClick={() => navigate("/redpage")}>
+          <button className="signup mb-5" onClick={handleCreatePin}>
             Create Pin
           </button>
         )}
@@ -53,6 +60,10 @@ function HomePage() {
         <img src={Img2} alt="image2" id="img2" />
       </div>
       <Parallax />
+
+      <Modal open={isOpen} onClose={() => setIsOpen(false)}>
+        <CreateContent setIsOpen={setIsOpen} />
+      </Modal>
     </div>
   );
 }

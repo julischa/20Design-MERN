@@ -2,15 +2,12 @@ import "./App.css";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import React, { useEffect } from "react";
 import Register from "./components/Register";
-import Messages from "./pages/Messages";
 import HomePage from "./pages/HomePage";
 import Redpage from "./components/Redpage";
 import Navbar from "./components/Navbar.js";
 import Login from "./components/Login";
-import Footer from "./components/Footer.js";
+import Footer from "./components/Footer";
 import { AuthContextProvider } from "./context/AuthContext";
-import Github from "./components/Github";
-// import Parallax from "./components/Parallax";
 
 function App() {
   useEffect(() => {
@@ -49,17 +46,18 @@ function App() {
     <AuthContextProvider>
       <BrowserRouter>
         <Navbar />
-        <Routes>
-          <Route path="/" element={<HomePage />} />
-          <Route path="/redpage" element={<Redpage />} />
-          <Route path="/login" element={<Login />} />
-          <Route path="/register" element={<Register />} />
-
-          <Route path="/messages" element={<Messages />} />
-        </Routes>
+        <div className="page-container">
+          <div className="content-wrap">
+            <Routes>
+              <Route path="/" element={<HomePage />} />
+              <Route path="/redpage" element={<Redpage />} />
+              <Route path="/login" element={<Login />} />
+              <Route path="/register" element={<Register />} />
+            </Routes>
+          </div>
+        </div>
+        <Footer />
       </BrowserRouter>
-      {/* <Footer /> */}
-      <Github />
     </AuthContextProvider>
   );
 }

@@ -59,27 +59,28 @@ function Navibar() {
           )}
         </div>
         <div style={{ position: "relative" }}>
-          <FormControl
-            id="searchbar"
-            type="text"
-            placeholder="Search..."
-            className="searchbar my-2 mb-2 mx-3"
-            value={searchQuery}
-            onChange={handleSearchChange}
-            onSubmit={handleSearchSubmit}
-          />
-          <img
-            src={Search}
-            alt="Search"
-            id="search-img"
-            style={{
-              position: "absolute",
-              top: "50%",
-              right: "30px",
-              transform: "translateY(-50%)",
-              width: "25px",
-            }}
-          />
+          <form onSubmit={handleSearchSubmit}>
+            <FormControl
+              id="searchbar"
+              type="text"
+              placeholder="Search..."
+              className="searchbar my-2 mb-2 mx-3"
+              value={searchQuery}
+              onChange={handleSearchChange}
+            />
+            <img
+              src={Search}
+              alt="Search"
+              id="search-img"
+              style={{
+                position: "absolute",
+                top: "50%",
+                right: "30px",
+                transform: "translateY(-50%)",
+                width: "25px",
+              }}
+            />
+          </form>
         </div>
 
         <img
